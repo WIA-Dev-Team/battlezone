@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WIA_Battlezone", "WIA_Battlezone\WIA_Battlezone.vcxproj", "{8CE5A8F6-2307-486D-9E27-09E8C8F5183D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CE5A8F6-2307-486D-9E27-09E8C8F5183D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8CE5A8F6-2307-486D-9E27-09E8C8F5183D}.Debug|Win32.Build.0 = Debug|Win32
+		{8CE5A8F6-2307-486D-9E27-09E8C8F5183D}.Release|Win32.ActiveCfg = Release|Win32
+		{8CE5A8F6-2307-486D-9E27-09E8C8F5183D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
