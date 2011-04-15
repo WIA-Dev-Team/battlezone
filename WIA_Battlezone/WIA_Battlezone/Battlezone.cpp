@@ -8,6 +8,7 @@
 #include <windows.h>
 #include "vector3D.h"
 #include "cs325graphics.h"
+#include "Pose.h"
 
 #define SCREEN_TEST 100
 #define ROTATE_TEST 100
@@ -17,8 +18,10 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	int temp;
+	Pose test;
+	test.setPoint(1,2,3);
 
-	cout << "Press enter to begin graphics test" << endl;
+	cout << "Type any number and press enter to begin graphics test" << endl;
 	cin >> temp;
 
 	CS325Graphics window(argc, argv);
