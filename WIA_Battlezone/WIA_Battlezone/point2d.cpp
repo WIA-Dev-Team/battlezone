@@ -57,7 +57,7 @@ float Point2D::getY()
 	return y;
 }
 
-const int BUFF_SIZE = 21;
+const int BUFF_SIZE = 51;
 
 string Point2D::toString()
 {

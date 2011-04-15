@@ -16,6 +16,7 @@ class Vector2D
 private:
 	float x;
 	float y;
+	void normalize();
 
 public:
 	Vector2D(void);
@@ -23,10 +24,10 @@ public:
 	Vector2D(float x, float y);
 	void setXY(float x, float y);
 	float getX();
-	float setY();
+	float getY();
 	float getAngle();
+	void rotate(float angle);
 	void setAngle(float angle);
-	void normalize();
 	std::string toString();
 	void setFromString(std::string &s);
 };

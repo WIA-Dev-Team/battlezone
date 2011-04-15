@@ -49,6 +49,13 @@ void Point3D::setY(float y)
 	this->y = y;
 }
 
+void Point3D::translate(Vector3D vector)
+{
+	x += vector.getX();	
+	y += vector.getY();	
+	z += vector.getZ();
+}
+
 float Point3D::getX()
 {
 	return x;

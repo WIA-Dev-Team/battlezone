@@ -17,7 +17,7 @@
 
 Vector2D::Vector2D(void)
 {
-	x = 0.0;
+	x = 1.0;
 	y = 0.0;
 }
 
@@ -47,21 +47,38 @@ float Vector2D::getX()
 	return x;
 }
 
-float Vector2D::setY()
+float Vector2D::getY()
 {
 	return y;
 }
 
+void Vector2D::rotate(float angle)
+{
+	setAngle(atan2(x, y)+angle);
+}
+
+void Vector2D::setAngle(float angle)
+{
+	x = cos(angle);
+	y = sin(angle);
+}
+
+
+float Vector2D::getAngle()
+{
+	return atan2(y, x);
+}
+
 void Vector2D::normalize()
 {
-	float d;
+	double d;
 
-	d = (float) sqrt(x*x+y*y);
+	d = sqrt(x*x+y*y);
 	x /= d;
 	y /= d;
 }
 
-const int BUFF_SIZE = 21;
+const int BUFF_SIZE = 51;
 
 std::string Vector2D::toString()
 {

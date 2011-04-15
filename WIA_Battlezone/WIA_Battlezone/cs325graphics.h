@@ -12,7 +12,7 @@
 #include "point2D.h"
 #include "point3D.h"
 #include "vector2D.h"
-
+#include <vector>
 
 class CS325Graphics{
 public:
