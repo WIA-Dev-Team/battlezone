@@ -30,6 +30,7 @@ class Pose:public Point
 public:
 	Pose();
 	Pose(float _x, float _y, float _z,float _theta);
+	float getTheta();
 
 private:
 	float theta;

@@ -17,8 +17,8 @@
 /*!	\author Ben Hubler
  *	\date 4/14/2011
  *	\version 1.0
- *	\class Point Point.h "Point.h"
- *	\brief This class is used to store x,y, and z coordinates
+ *	\class Pose Pose.h "Pose.h"
+ *	\brief This class is used to store a position and is a subclass of Point.h
  */
 
 #include "Pose.h"
@@ -31,4 +31,9 @@ Pose::Pose():Point()
 Pose::Pose(float _x, float _y, float _z,float _theta):Point(_x, _y, _z)
 {
 	theta = _theta;
+}
+
+float Pose::getTheta()
+{
+	return theta;
 }
