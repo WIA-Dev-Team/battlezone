@@ -65,9 +65,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="Pose" --><!-- doxytag: inherits="Point" -->
-<p>This class is used to store a position and is a subclass of <a class="el" href="_point_8h_source.html">Point.h</a>.  
- <a href="class_pose.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="_pose_8h_source.html">Pose.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Pose:</div>
@@ -75,7 +72,7 @@ Inheritance diagram for Pose:</div>
  <div class="center">
   <img src="class_pose.png" usemap="#Pose_map" alt=""/>
   <map id="Pose_map" name="Pose_map">
-<area href="class_point.html" title="This class is used to store x,y, and z coordinates." alt="Point" shape="rect" coords="0,0,40,24"/>
+<area href="class_point.html" alt="Point" shape="rect" coords="0,0,40,24"/>
 </map>
  </div></div>
 
@@ -83,19 +80,129 @@ Inheritance diagram for Pose:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3cd8aa60acd61ec0d1ea7cf2da0f1bc7"></a><!-- doxytag: member="Pose::Pose" ref="a3cd8aa60acd61ec0d1ea7cf2da0f1bc7" args="(float _x, float _y, float _z, float _theta)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>Pose</b> (float _x, float _y, float _z, float _theta)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac68d4bed5fbbe3122451179df5dfd491"></a><!-- doxytag: member="Pose::getTheta" ref="ac68d4bed5fbbe3122451179df5dfd491" args="()" -->
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getTheta</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pose.html#a8a4171c8a6b09e37fb011997da9ea2ad">Pose</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pose.html#a3cd8aa60acd61ec0d1ea7cf2da0f1bc7">Pose</a> (float _x, float _y, float _z, float _theta)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pose.html#afc4307f8493a10dc3a920502365dcd01">setTheta</a> (float _theta)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pose.html#ac68d4bed5fbbe3122451179df5dfd491">getTheta</a> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>This class is used to store a position and is a subclass of <a class="el" href="_point_8h_source.html">Point.h</a>. </p>
-<dl class="author"><dt><b>Author:</b></dt><dd>Ben Hubler</dd></dl>
+<div class="textblock"><p>A subclass of <a class="el" href="class_point.html">Point</a> that is used to track a point and orientation Orientation is represented by a float theta, in degress from positive x axis </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Ben Hubler </dd></dl>
 <dl class="date"><dt><b>Date:</b></dt><dd>4/14/2011 </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>1.0 </dd></dl>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a8a4171c8a6b09e37fb011997da9ea2ad"></a><!-- doxytag: member="Pose::Pose" ref="a8a4171c8a6b09e37fb011997da9ea2ad" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Pose::Pose </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Default constructor sets x, y, z, and theta to 0.0 during initialization </p>
+
+</div>
+</div>
+<a class="anchor" id="a3cd8aa60acd61ec0d1ea7cf2da0f1bc7"></a><!-- doxytag: member="Pose::Pose" ref="a3cd8aa60acd61ec0d1ea7cf2da0f1bc7" args="(float _x, float _y, float _z, float _theta)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Pose::Pose </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_theta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Overloaded constructor sets x, y, z, and theta during initialization </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_x</td><td>is a float representing the X coordinate </td></tr>
+    <tr><td class="paramname">_y</td><td>is a float representing the Y coordinate </td></tr>
+    <tr><td class="paramname">_z</td><td>is a float representing the Z coordinate </td></tr>
+    <tr><td class="paramname">_theta</td><td>is a float representing the theta orientation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ac68d4bed5fbbe3122451179df5dfd491"></a><!-- doxytag: member="Pose::getTheta" ref="ac68d4bed5fbbe3122451179df5dfd491" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Pose::getTheta </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Function to return the float value of theta </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>float value for theta </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="afc4307f8493a10dc3a920502365dcd01"></a><!-- doxytag: member="Pose::setTheta" ref="afc4307f8493a10dc3a920502365dcd01" args="(float _theta)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pose::setTheta </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_theta</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Function to set theta </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_theta</td><td>is a float representing the theta orientation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>U:/battlezone/WIA_Battlezone/WIA_Battlezone/<a class="el" href="_pose_8h_source.html">Pose.h</a></li>
-<li>U:/battlezone/WIA_Battlezone/WIA_Battlezone/Pose.cpp</li>
+<li>U:/battlezone/WIA_Battlezone/WIA_Battlezone/<a class="el" href="_pose_8cpp.html">Pose.cpp</a></li>
 </ul>
 </div>
 <!-- window showing the filter options -->
@@ -103,7 +210,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>getTheta</b> ()</td>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,7 +219,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>getTheta</b> ()</td>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Apr 16 2011 17:45:46 for WIA Battlezone by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Apr 17 2011 00:51:28 for WIA Battlezone by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
 </body>

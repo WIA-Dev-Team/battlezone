@@ -9,6 +9,7 @@
 #include "vector3D.h"
 #include "cs325graphics.h"
 #include "Pose.h"
+#include "Object.h"
 
 #define SCREEN_TEST 100
 #define ROTATE_TEST 100
@@ -18,9 +19,20 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	int temp;
-	Pose test;
-	test.setPoint(1,2,3);
+	Object test;
+	test.setCoordinate(3.12,4.12,5.0);
+	test.setHealth(10);
+	test.setMovable(true);
+	test.setOrientation(45);
 
+	while(!test.isDestroyed())
+	{
+		cout << "test health: " << test.getHealth() << endl;
+		cout << "test position: " << test.getPose().getX() << ", " << test.getPose().getY() << ", " << test.getPose().getZ() << endl;
+		cout << "test hit..." << endl;
+		test.setHealth(test.getHealth() - 1);
+	}
+	cout << endl;
 	cout << "Type any number and press enter to begin graphics test" << endl;
 	cin >> temp;
 

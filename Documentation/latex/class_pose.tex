@@ -4,11 +4,6 @@
 }
 
 
-This class is used to store a position and is a subclass of \hyperlink{_point_8h_source}{Point.h}.  
-
-
-
-
 {\ttfamily \#include $<$Pose.h$>$}
 
 Inheritance diagram for Pose:\begin{figure}[H]
@@ -20,23 +15,19 @@ Inheritance diagram for Pose:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_pose_a3cd8aa60acd61ec0d1ea7cf2da0f1bc7}{
-{\bfseries Pose} (float \_\-x, float \_\-y, float \_\-z, float \_\-theta)}
-\label{class_pose_a3cd8aa60acd61ec0d1ea7cf2da0f1bc7}
-
+\hyperlink{class_pose_a8a4171c8a6b09e37fb011997da9ea2ad}{Pose} ()
 \item 
-\hypertarget{class_pose_ac68d4bed5fbbe3122451179df5dfd491}{
-float {\bfseries getTheta} ()}
-\label{class_pose_ac68d4bed5fbbe3122451179df5dfd491}
-
+\hyperlink{class_pose_a3cd8aa60acd61ec0d1ea7cf2da0f1bc7}{Pose} (float \_\-x, float \_\-y, float \_\-z, float \_\-theta)
+\item 
+void \hyperlink{class_pose_afc4307f8493a10dc3a920502365dcd01}{setTheta} (float \_\-theta)
+\item 
+float \hyperlink{class_pose_ac68d4bed5fbbe3122451179df5dfd491}{getTheta} ()
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-This class is used to store a position and is a subclass of \hyperlink{_point_8h_source}{Point.h}. 
-
-\begin{DoxyAuthor}{Author}
-Ben Hubler
+A subclass of \hyperlink{class_point}{Point} that is used to track a point and orientation Orientation is represented by a float theta, in degress from positive x axis \begin{DoxyAuthor}{Author}
+Ben Hubler 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
 4/14/2011 
@@ -46,7 +37,71 @@ Ben Hubler
 \end{DoxyVersion}
 
 
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_pose_a8a4171c8a6b09e37fb011997da9ea2ad}{
+\index{Pose@{Pose}!Pose@{Pose}}
+\index{Pose@{Pose}!Pose@{Pose}}
+\subsubsection[{Pose}]{\setlength{\rightskip}{0pt plus 5cm}Pose::Pose (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_pose_a8a4171c8a6b09e37fb011997da9ea2ad}
+Default constructor sets x, y, z, and theta to 0.0 during initialization \hypertarget{class_pose_a3cd8aa60acd61ec0d1ea7cf2da0f1bc7}{
+\index{Pose@{Pose}!Pose@{Pose}}
+\index{Pose@{Pose}!Pose@{Pose}}
+\subsubsection[{Pose}]{\setlength{\rightskip}{0pt plus 5cm}Pose::Pose (
+\begin{DoxyParamCaption}
+\item[{float}]{\_\-x, }
+\item[{float}]{\_\-y, }
+\item[{float}]{\_\-z, }
+\item[{float}]{\_\-theta}
+\end{DoxyParamCaption}
+)}}
+\label{class_pose_a3cd8aa60acd61ec0d1ea7cf2da0f1bc7}
+Overloaded constructor sets x, y, z, and theta during initialization 
+\begin{DoxyParams}{Parameters}
+{\em \_\-x} & is a float representing the X coordinate \\
+\hline
+{\em \_\-y} & is a float representing the Y coordinate \\
+\hline
+{\em \_\-z} & is a float representing the Z coordinate \\
+\hline
+{\em \_\-theta} & is a float representing the theta orientation \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_pose_ac68d4bed5fbbe3122451179df5dfd491}{
+\index{Pose@{Pose}!getTheta@{getTheta}}
+\index{getTheta@{getTheta}!Pose@{Pose}}
+\subsubsection[{getTheta}]{\setlength{\rightskip}{0pt plus 5cm}float Pose::getTheta (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_pose_ac68d4bed5fbbe3122451179df5dfd491}
+Function to return the float value of theta \begin{DoxyReturn}{Returns}
+float value for theta 
+\end{DoxyReturn}
+\hypertarget{class_pose_afc4307f8493a10dc3a920502365dcd01}{
+\index{Pose@{Pose}!setTheta@{setTheta}}
+\index{setTheta@{setTheta}!Pose@{Pose}}
+\subsubsection[{setTheta}]{\setlength{\rightskip}{0pt plus 5cm}void Pose::setTheta (
+\begin{DoxyParamCaption}
+\item[{float}]{\_\-theta}
+\end{DoxyParamCaption}
+)}}
+\label{class_pose_afc4307f8493a10dc3a920502365dcd01}
+Function to set theta 
+\begin{DoxyParams}{Parameters}
+{\em \_\-theta} & is a float representing the theta orientation \\
+\hline
+\end{DoxyParams}
+
+
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
 \item 
-U:/battlezone/WIA\_\-Battlezone/WIA\_\-Battlezone/Pose.h\item 
-U:/battlezone/WIA\_\-Battlezone/WIA\_\-Battlezone/Pose.cpp\end{DoxyCompactItemize}
+U:/battlezone/WIA\_\-Battlezone/WIA\_\-Battlezone/\hyperlink{_pose_8h}{Pose.h}\item 
+U:/battlezone/WIA\_\-Battlezone/WIA\_\-Battlezone/\hyperlink{_pose_8cpp}{Pose.cpp}\end{DoxyCompactItemize}
