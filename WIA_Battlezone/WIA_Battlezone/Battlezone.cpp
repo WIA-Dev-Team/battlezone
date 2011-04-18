@@ -10,6 +10,9 @@
 #include "cs325graphics.h"
 #include "Pose.h"
 #include "Object.h"
+#include "RenderType.h"
+#include <list>
+#include "Tank.h"
 
 #define SCREEN_TEST 100
 #define ROTATE_TEST 100
@@ -19,18 +22,42 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	int temp;
-	Object test;
+	Tank test;
+	RenderType testrt(001);
+	
+	for (int i=0;i<10;i++)
+	{
+		testrt.addPoint(Point(float(i),float(i),float(i)));
+
+	}
+
+	list<Point>::iterator pointIter = testrt.getPointsBegin();
+	while(pointIter != testrt.getPointsEnd())
+	{
+		cout << "X: " << pointIter->getX() << ", Y: " 
+			 << pointIter->getY() << ", Z: " 
+			 << pointIter->getZ() << endl;
+		pointIter++;
+	}
+	cout << endl;
 	test.setCoordinate(3.12,4.12,5.0);
 	test.setHealth(10);
 	test.setMovable(true);
 	test.setOrientation(45);
-
+	
 	while(!test.isDestroyed())
 	{
+		
+		cout << "Firing..." << endl;
+		test.shotFired();
 		cout << "test health: " << test.getHealth() << endl;
 		cout << "test position: " << test.getPose().getX() << ", " << test.getPose().getY() << ", " << test.getPose().getZ() << endl;
 		cout << "test hit..." << endl;
 		test.setHealth(test.getHealth() - 1);
+		while(!test.canFire())
+		{
+			Sleep(1000);
+		}
 	}
 	cout << endl;
 	cout << "Type any number and press enter to begin graphics test" << endl;

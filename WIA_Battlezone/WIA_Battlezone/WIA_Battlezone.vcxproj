@@ -80,6 +80,8 @@
     <ClCompile Include="point2d.cpp" />
     <ClCompile Include="point3d.cpp" />
     <ClCompile Include="Pose.cpp" />
+    <ClCompile Include="RenderType.cpp" />
+    <ClCompile Include="Tank.cpp" />
     <ClCompile Include="vector2d.cpp" />
     <ClCompile Include="vector3d.cpp" />
   </ItemGroup>
@@ -94,7 +96,9 @@
     <ClInclude Include="point2d.h" />
     <ClInclude Include="point3d.h" />
     <ClInclude Include="Pose.h" />
+    <ClInclude Include="RenderType.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Tank.h" />
     <ClInclude Include="vector2d.h" />
     <ClInclude Include="vector3d.h" />
   </ItemGroup>
