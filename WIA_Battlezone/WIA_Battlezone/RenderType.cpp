@@ -11,7 +11,7 @@
  *	GNU General Public License for more details.
  *
  *	You should have received a copy of the GNU General Public License
- *	along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ *	along with WIA Battlezone.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /**
@@ -67,4 +67,13 @@ std::list<Point>::iterator RenderType::getPointsEnd()
 void RenderType::addPoint(Point _point)
 {
 	points.push_back(_point);
+}
+
+/**
+ *	Function to return the objectID
+ *	@return int value representing the objectID
+ */
+int RenderType::getObjectID()
+{
+	return objectid;
 }

@@ -80,10 +80,15 @@
     <ClCompile Include="point2d.cpp" />
     <ClCompile Include="point3d.cpp" />
     <ClCompile Include="Pose.cpp" />
+    <ClCompile Include="RenderEngine.cpp" />
     <ClCompile Include="RenderType.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="vector2d.cpp" />
     <ClCompile Include="vector3d.cpp" />
+    <ClCompile Include="xmlParser\tinystr.cpp" />
+    <ClCompile Include="xmlParser\tinyxml.cpp" />
+    <ClCompile Include="xmlParser\tinyxmlerror.cpp" />
+    <ClCompile Include="xmlParser\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cs325graphics.h" />
@@ -96,14 +101,20 @@
     <ClInclude Include="point2d.h" />
     <ClInclude Include="point3d.h" />
     <ClInclude Include="Pose.h" />
+    <ClInclude Include="RenderEngine.h" />
     <ClInclude Include="RenderType.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Tank.h" />
     <ClInclude Include="vector2d.h" />
     <ClInclude Include="vector3d.h" />
+    <ClInclude Include="xmlParser\tinystr.h" />
+    <ClInclude Include="xmlParser\tinyxml.h" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="cs325graphics.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RenderTypes.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<renderobjects>
+	<object name="Standard Cube" id="1">
+    <line>
+      <point x="0" y="0" z="0"></point>
+      <point x="10" y="0" z="0"></point>
+    </line>
+    <line>
+      <point x="0" y="0" z="0"></point>
+      <point x="0" y="10" z="0"></point>
+    </line>
+    <line>
+      <point x="0" y="0" z="0"></point>
+      <point x="0" y="0" z="10"></point>
+    </line>
+    <line>
+      <point x="10" y="0" z="0"></point>
+      <point x="10" y="10" z="0"></point>
+    </line>
+    <line>
+      <point x="10" y="0" z="0"></point>
+      <point x="10" y="0" z="10"></point>
+    </line>
+    <line>
+      <point x="10" y="10" z="0"></point>
+      <point x="0" y="10" z="0"></point>
+    </line>
+    <line>
+      <point x="10" y="10" z="0"></point>
+      <point x="10" y="10" z="10"></point>
+    </line>
+    <line>
+      <point x="0" y="10" z="0"></point>
+      <point x="0" y="10" z="10"></point>
+    </line>
+    <line>
+      <point x="0" y="0" z="10"></point>
+      <point x="0" y="10" z="10"></point>
+    </line>
+    <line>
+      <point x="0" y="0" z="10"></point>
+      <point x="10" y="0" z="10"></point>
+    </line>
+    <line>
+      <point x="10" y="0" z="10"></point>
+      <point x="10" y="10" z="10"></point>
+    </line>
+    <line>
+      <point x="10" y="10" z="10"></point>
+      <point x="0" y="10" z="10"></point>
+    </line>
+  </object>
+  <object name="Standard Pyramid" id="2">
+    <line>
+      <point x="0" y="0" z="0"></point>
+      <point x="10" y="0" z="0"></point>
+    </line>
+    <line>
+      <point x="0" y="0" z="0"></point>
+      <point x="5" y="10" z="-5"></point>
+    </line>
+    <line>
+      <point x="0" y="0" z="0"></point>
+      <point x="0" y="0" z="-10"></point>
+    </line>
+    <line>
+      <point x="10" y="0" z="0"></point>
+      <point x="5" y="10" z="-5"></point>
+    </line>
+    <line>
+      <point x="10" y="0" z="0"></point>
+      <point x="10" y="0" z="-10"></point>
+    </line>
+    <line>
+      <point x="0" y="0" z="-10"></point>
+      <point x="5" y="10" z="-5"></point>
+    </line>
+    <line>
+      <point x="0" y="0" z="-10"></point>
+      <point x="10" y="0" z="-10"></point>
+    </line>
+    <line>
+      <point x="0" y="0" z="-10"></point>
+      <point x="5" y="10" z="-5"></point>
+    </line>
+  </object>
+</renderobjects>

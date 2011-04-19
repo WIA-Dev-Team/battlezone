@@ -14,41 +14,44 @@
  *	along with WIA Battlezone.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef RENDERENGINE_H
+#define RENDERENGINE_H
 
 /**	
- *	@file Object.h
+ *	@file RenderEngine.h
  */
-
+#include <windows.h>
+#include <vector>
+#include <string>
+#include "RenderType.h"
 #include "Object.h"
-#include "Pose.h"
+#include "cs325graphics.h"
+
+using namespace std;
 
 /** 
- *	A class that is used to represent all objects in battlezone
+ *	A class that is used as a wrapper to render view in battlezone game
  *	@author Ben Hubler
- *	@date 4/16/2011
+ *	@date 4/18/2011
  *	@version 1.0
  */
-class Object
+class RenderEngine
 {
 public:
-	Object();
-	Object(Pose _pose, int _health, int _objectid, bool _movable);
-	void setCoordinate(Point _point);
-	void setCoordinate(float _x, float _y, float _z);
-	void setOrientation(float _theta);
-	void setHealth(int _health);
-	void setObjectID(int _objectid);
-	void setMovable(bool _movable);
-	Pose getPose();
-	bool isDestroyed();
-	int getHealth();
+	RenderEngine(int _argc, char* _argv[]);
+	RenderEngine(int _argc, char* _argv[], string _renderobjectfile, int _scalefactor);
+	~RenderEngine();
+	void addRenderType(RenderType _renderobject);
+	void resetRenderEngine(string _renderobjectfile);
+	void drawobject(int _objectid, Pose _position);
+	void draw();
 private:
-	Pose pose;
-	int health;
-	int objectid;
-	bool movable;
+	vector<RenderType> renderobjects;
+	CS325Graphics *window;/*(int _argc, char* _argv[]);*/
+	int scalefactor;
+	float currentx;
+	float currentz;
+	Vector2D currangle;
 };
 
 #endif

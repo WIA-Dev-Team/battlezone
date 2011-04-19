@@ -3,6 +3,8 @@
 /* author: djbouvier
 /* date: 12 April 2011 
  */
+#ifndef CS325GRAPHICS_H
+#define CS325GRAPHICS_H
 
 #include <windows.h>		// Header File For Windows
 #include "freeglut.h"		// Header File For OpenGL Utility Library
@@ -28,3 +30,5 @@ public:
 	static const float X_MIN;
 	static const float Y_MIN;
 };
+
+#endif
