@@ -72,6 +72,9 @@
     <ClCompile Include="xmlParser\tinyxmlparser.cpp">
       <Filter>Source Files\xmlParser</Filter>
     </ClCompile>
+    <ClCompile Include="testdriver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Point.h">
