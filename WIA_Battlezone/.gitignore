@@ -3,3 +3,4 @@ Debug
 *.~vsd
 WIA_Battlezone.suo
 WIA_Battlezone.sdf
+testdriver.cpp
