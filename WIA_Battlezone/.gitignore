@@ -4,3 +4,5 @@ Debug
 WIA_Battlezone.suo
 WIA_Battlezone.sdf
 testdriver.cpp
+WIA_Battlezone/WIA_Battlezone.vcxproj
+WIA_Battlezone/WIA_Battlezone.vcxproj.filter
