@@ -10,7 +10,7 @@
 #include "cs325graphics.h"
 #include "Pose.h"
 #include "Object.h"
-#include "RenderType.h"
+#include "RenderObject.h"
 #include <list>
 #include "Tank.h"
 #include "RenderEngine.h"
