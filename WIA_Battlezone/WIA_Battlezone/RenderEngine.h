@@ -23,7 +23,7 @@
 #include <windows.h>
 #include <vector>
 #include <string>
-#include "RenderType.h"
+#include "RenderObject.h"
 #include "Object.h"
 #include "cs325graphics.h"
 
@@ -32,23 +32,22 @@ using namespace std;
 /** 
  *	A class that is used as a wrapper to render view in battlezone game
  *	@author Ben Hubler
- *	@date 4/18/2011
- *	@version 1.0
+ *	@date 4/19/2011
+ *	@version 1.0.1
  */
 class RenderEngine
 {
 public:
 	RenderEngine(int _argc, char* _argv[]);
-	RenderEngine(int _argc, char* _argv[], string _renderobjectfile, int _scalefactor);
+	RenderEngine(int _argc, char* _argv[], string _renderobjectfile);
 	~RenderEngine();
-	void addRenderType(RenderType _renderobject);
-	void resetRenderEngine(string _renderobjectfile);
+	void addRenderObject(RenderObject _renderobject);
+	void initRenderEngine(string _renderobjectfile);
 	void drawobject(int _objectid, Pose _position);
 	void draw();
 private:
-	vector<RenderType> renderobjects;
-	CS325Graphics *window;/*(int _argc, char* _argv[]);*/
-	int scalefactor;
+	vector<RenderObject> renderobjects;
+	CS325Graphics *window;
 	float currentx;
 	float currentz;
 	Vector2D currangle;

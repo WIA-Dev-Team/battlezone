@@ -18,27 +18,40 @@
  *	@file RenderType.cpp
  *	@headerfile RenderType.h "RenderType.h"
  *	@author Ben Hubler
- *	@date 4/17/2011
- *	@version 1.0
+ *	@date 4/19/2011
+ *	@version 1.0.1
  */
-#include "RenderType.h"
+#include "RenderObject.h"
 
 /**
  *	Default constructor
  */
-RenderType::RenderType()
+RenderObject::RenderObject()
 {
 	objectid = NULL;
+	maxdist = NULL;
 	points.clear();
 }
 
 /**
  *	Overloaded constructor to set the objectid
- *	@param _objectid int value representing a unique number for each RenderType
+ *	@param _objectid int value representing a unique number for each RenderObject
  */
-RenderType::RenderType(int _objectid)
+RenderObject::RenderObject(int _objectid)
 {
 	objectid = _objectid;
+	points.clear();
+}
+
+/**
+ *	Overloaded constructor to set objectid and maxdist
+ *	@param _objectid int value representing a unique number for each RenderObject
+ *	@param _maxdist double value representing max distance from center of RenderObject
+ */
+RenderObject::RenderObject(int _objectid, double _maxdist)
+{
+	objectid = _objectid;
+	maxdist = _maxdist;
 	points.clear();
 }
 
@@ -46,7 +59,7 @@ RenderType::RenderType(int _objectid)
  *	Function to return an iterator pointing to the beginning of points
  *	@return iterator pointing to the beginning of points list
  */
-std::list<Point>::iterator RenderType::getPointsBegin()
+std::list<Point>::iterator RenderObject::getPointsBegin()
 {
 	return points.begin();
 }
@@ -55,7 +68,7 @@ std::list<Point>::iterator RenderType::getPointsBegin()
  *	Function to return an iterator pointing to the end of points
  *	@return iterator pointing to the end of points list
  */
-std::list<Point>::iterator RenderType::getPointsEnd()
+std::list<Point>::iterator RenderObject::getPointsEnd()
 {
 	return points.end();
 }
@@ -64,7 +77,7 @@ std::list<Point>::iterator RenderType::getPointsEnd()
  *	Function to add a Point to a list of points
  *	@param _point is a Point with an X, Y, and Z coordinate
  */
-void RenderType::addPoint(Point _point)
+void RenderObject::addPoint(Point _point)
 {
 	points.push_back(_point);
 }
@@ -73,7 +86,25 @@ void RenderType::addPoint(Point _point)
  *	Function to return the objectID
  *	@return int value representing the objectID
  */
-int RenderType::getObjectID()
+int RenderObject::getObjectID()
 {
 	return objectid;
+}
+
+/**
+ *	Function to set objectid
+ *	@param _objectid int value representing a unique number for each RenderObject
+ */
+void RenderObject::setObjectID(int _objectid)
+{
+	objectid = _objectid;
+}
+
+/**
+ *	Function to set maxdist
+ *	@param _maxdist double value representing max distance from center of RenderObject
+ */
+void RenderObject::setMaxDistance(double _maxdist)
+{
+	maxdist = _maxdist;
 }

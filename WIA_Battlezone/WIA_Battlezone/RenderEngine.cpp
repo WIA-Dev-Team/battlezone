@@ -16,13 +16,13 @@
 
 /**	
  *	@file RenderEngine.cpp
+ *	@headerfile RenderEngine.h "RenderEngine.h"
  *	@author Ben Hubler
- *	@date 4/16/2011
- *	@version 1.0
+ *	@date 4/19/2011
+ *	@version 1.0.1
  */
-
+#include <Windows.h>
 #include "RenderEngine.h"
-#include "RenderType.h"
 #include "xmlParser\tinystr.h"
 #include "xmlParser\tinyxml.h"
 #include "point3d.h"
@@ -40,19 +40,17 @@ RenderEngine::RenderEngine(int _argc, char* _argv[])
 	window->SetViewDirection(currangle);
 	window->SetViewPosition(Point2D(currentx, currentz));
 	renderobjects.clear();
-	scalefactor = 200;
 }
 
-RenderEngine::RenderEngine(int _argc, char* _argv[], string _renderobjectfile, int _scalefactor)
+RenderEngine::RenderEngine(int _argc, char* _argv[], string _renderobjectfile)
 {
 	currentx = 0.0;
 	currentz = 0.0;
 	currangle.setXY(1,0); 
 	window = new CS325Graphics(_argc, _argv);
-	resetRenderEngine(_renderobjectfile);
+	initRenderEngine(_renderobjectfile);
 	window->SetViewDirection(Vector2D(1,0));
 	window->SetViewPosition(Point2D(currentx, currentz));
-	scalefactor = _scalefactor;
 }
 
 RenderEngine::~RenderEngine()
@@ -60,7 +58,7 @@ RenderEngine::~RenderEngine()
 	delete window;
 	//add code to properly delete renderobjects vector of pointers
 }
-void RenderEngine::resetRenderEngine(string _renderobjectfile)
+void RenderEngine::initRenderEngine(string _renderobjectfile)
 {
 	TiXmlElement *rootxml;
 	TiXmlElement *objectxml;
@@ -70,6 +68,7 @@ void RenderEngine::resetRenderEngine(string _renderobjectfile)
 	int *x = new int();
 	int *y = new int();
 	int *z = new int();
+	double *maxdist = new double();
 
 	TiXmlDocument renderobjectsxml(_renderobjectfile.c_str());
 	renderobjectsxml.LoadFile();
@@ -78,8 +77,9 @@ void RenderEngine::resetRenderEngine(string _renderobjectfile)
 	
 	while(objectxml != 0)
 	{
-		objectxml->Attribute("id",objectid);
-		RenderType *renderobject = new RenderType(*objectid);
+		objectxml->Attribute("id", objectid);
+		objectxml->Attribute("maxdist", maxdist);
+		RenderObject *renderobject = new RenderObject(*objectid, *maxdist);
 		linexml = objectxml->FirstChildElement("line");
 		while(linexml != 0)
 		{
@@ -106,7 +106,7 @@ void RenderEngine::resetRenderEngine(string _renderobjectfile)
 
 void RenderEngine::drawobject(int _objectid, Pose _position)
 {
-	vector<RenderType>::iterator iter;
+	vector<RenderObject>::iterator iter;
 	list<Point>::iterator piter;
 	Point3D point1;
 	Point3D point2;
@@ -118,13 +118,13 @@ void RenderEngine::drawobject(int _objectid, Pose _position)
 			piter = iter->getPointsBegin();
 			while(piter != iter->getPointsEnd())
 			{
-				point1.setXYZ((piter->getX() / scalefactor) + _position.getX() / scalefactor, 
-					(piter->getY() / scalefactor) - _position.getY() / scalefactor,
-					(piter->getZ() / scalefactor) - _position.getZ() / scalefactor);
+				point1.setXYZ(piter->getX() + _position.getX(), 
+					piter->getY() - _position.getY(),
+					piter->getZ() - _position.getZ());
 				piter++;
-				point2.setXYZ((piter->getX() / scalefactor) + _position.getX() / scalefactor, 
-					(piter->getY() / scalefactor) - _position.getY() / scalefactor, 
-					(piter->getZ() / scalefactor) - _position.getZ() / scalefactor);
+				point2.setXYZ(piter->getX() + _position.getX(), 
+					piter->getY() - _position.getY(),
+					piter->getZ() - _position.getZ());
 				window->DrawLineInSpace(point1,point2);
 				piter++;
 			}
@@ -135,38 +135,42 @@ void RenderEngine::drawobject(int _objectid, Pose _position)
 
 void RenderEngine::draw()
 {
+	bool run = true;
 	// Rotation testing
 	float delta = .1 * PI / 180;
-	for(int i = 0; i < 3600; i++)
+	//for(int i = 0; i < 450; i++)
+	while(run)
 	{
 		window->DrawLineInSpace(Point3D(0,-1,0),Point3D(1,-1,0));
-		drawobject(1, Pose(100, 20, -100, 0));
-		drawobject(2, Pose(-100, 20, -100, 0));
-		drawobject(1, Pose(-100, 20, 100, 0));
-		drawobject(2, Pose(100, 20, 100, 0));
+		drawobject(1, Pose(100, 0, 80, 0));
+		drawobject(2, Pose(120, 0, 100, 0));
+		drawobject(1, Pose(80, 0, 100, 0));
+		drawobject(2, Pose(100, 0, 100, 0));
 		window->SetViewDirection(currangle);
 		currangle.setAngle(currangle.getAngle() + delta);
 		cout << currangle.getAngle() * 180 / PI << endl;
 		window->DisplayNow();
 		Sleep(5);
+		if(GetAsyncKeyState(0x51) & 0x8000)
+			run = false;
 	}
 
-	// 
-	//float speed = .5;
-	//currangle.setXY(1,1);
-	//for(int i = 0; i < 200; i++)
-	//{
-	//	cout << currangle.getAngle() * 180 / PI << endl;
-	//	currentx = currentx + speed * currangle.getX() / scalefactor;
-	//	currentz = currentz + speed * currangle.getY() / scalefactor;
-	//	window->SetViewPosition(Point2D(currentx, currentz));
-	//	drawobject(1, Pose(100, 0, -100, 0));
-	//	drawobject(2, Pose(-100, 0, -100, 0));
-	//	drawobject(1, Pose(-100, 0, 100, 0));
-	//	drawobject(2, Pose(100, 0, 100, 0));
-	//	window->DisplayNow();
-	//	Sleep(25);
-	//}
+	 
+	float speed = .5;
+	currangle.setXY(1,1);
+	for(int i = 0; i < 400; i++)
+	{
+		cout << currangle.getAngle() * 180 / PI << endl;
+		currentz = currentz + speed * currangle.getY();
+		window->SetViewPosition(Point2D(currentx, currentz));
+		drawobject(1, Pose(100, 0, 80, 0));
+		drawobject(2, Pose(120, 0, 100, 0));
+		drawobject(1, Pose(80, 0, 100, 0));
+		drawobject(2, Pose(100, 0, 100, 0));
+		window->DisplayNow();
+		cout << currentz << endl;
+		Sleep(25);
+	}
 		
 	Sleep(10000);
 }

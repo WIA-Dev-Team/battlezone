@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <renderobjects>
-	<object name="Standard Cube" id="1">
+	<object name="Standard Cube" id="1" maxdist="7.071">
     <line>
       <point x="0" y="0" z="0"></point>
       <point x="10" y="0" z="0"></point>
@@ -50,7 +50,7 @@
       <point x="0" y="10" z="10"></point>
     </line>
   </object>
-  <object name="Standard Pyramid" id="2">
+  <object name="Standard Pyramid" id="2" maxdist="7.071">
     <line>
       <point x="0" y="0" z="0"></point>
       <point x="10" y="0" z="0"></point>

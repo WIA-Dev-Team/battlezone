@@ -81,7 +81,7 @@
     <ClCompile Include="point3d.cpp" />
     <ClCompile Include="Pose.cpp" />
     <ClCompile Include="RenderEngine.cpp" />
-    <ClCompile Include="RenderType.cpp" />
+    <ClCompile Include="RenderObject.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="testdriver.cpp" />
     <ClCompile Include="vector2d.cpp" />
@@ -103,7 +103,7 @@
     <ClInclude Include="point3d.h" />
     <ClInclude Include="Pose.h" />
     <ClInclude Include="RenderEngine.h" />
-    <ClInclude Include="RenderType.h" />
+    <ClInclude Include="RenderObject.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Tank.h" />
     <ClInclude Include="vector2d.h" />

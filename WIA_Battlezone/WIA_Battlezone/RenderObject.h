@@ -18,8 +18,8 @@
  *	@file RenderType.h
  */
 
-#ifndef RENDERTYPE_H
-#define RENDERTYPE_H
+#ifndef RENDEROBJECT_H
+#define RENDEROBJECT_H
 
 #include <list>
 #include "Point.h"
@@ -27,21 +27,25 @@
 /** 
  *	A class that is used to store information used to create images during the render process
  *	@author Ben Hubler
- *	@date 4/17/2011
- *	@version 1.0
+ *	@date 4/19/2011
+ *	@version 1.0.1
  */
-class RenderType
+class RenderObject
 {
 public:
-	RenderType();
-	RenderType(int _objectid);
+	RenderObject();
+	RenderObject(int _objectid);
+	RenderObject(int _objectid, double _maxdist);
 	void addPoint(Point _point);
 	void setObjectID(int _objectid);
+	void setMaxDistance(double _maxdist);
+	double getMaxDistance();
 	int getObjectID();
 	std::list<Point>::iterator getPointsBegin();
 	std::list<Point>::iterator getPointsEnd();
 private:
 	int objectid;
+	double maxdist;
 	std::list<Point> points;
 };
 
