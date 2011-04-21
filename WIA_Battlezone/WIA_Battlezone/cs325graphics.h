@@ -24,6 +24,7 @@ public:
 	void DisplayNow();
 	void SetViewPosition(Point2D vp);
 	void SetViewDirection(Vector2D vd);
+	void setViewElevation(float height);
 
 	static const float X_MAX;
 	static const float Y_MAX;
