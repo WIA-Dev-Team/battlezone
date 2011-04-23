@@ -44,7 +44,10 @@ public:
 	void addRenderObject(RenderObject _renderobject);
 	void initRenderEngine(string _renderobjectfile);
 	void drawobject(int _objectid, Pose _position);
+	void rotate(float _degrees);
+	void move(float _speed);
 	void draw();
+	void displayXYZTheta();
 private:
 	vector<RenderObject> renderobjects;
 	CS325Graphics *window;

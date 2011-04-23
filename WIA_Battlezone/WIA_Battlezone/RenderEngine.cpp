@@ -28,6 +28,12 @@
 #include "point3d.h"
 
 const float PI=3.14159265;
+const float	RAD_0DEG = 0.0000000;
+const float RAD_90DEG = 1.5707963;
+const float RAD_180DEG = 3.1415927;
+const float RAD_270DEG = 4.7123890;
+const float RAD_360DEG = 6.2831853;
+
 /**
  *	Default constructor
  */
@@ -39,6 +45,7 @@ RenderEngine::RenderEngine(int _argc, char* _argv[])
 	window = new CS325Graphics(_argc, _argv);
 	window->SetViewDirection(currangle);
 	window->SetViewPosition(Point2D(currentx, currentz));
+	window->setViewElevation(-6.0);
 	renderobjects.clear();
 }
 
@@ -51,6 +58,7 @@ RenderEngine::RenderEngine(int _argc, char* _argv[], string _renderobjectfile)
 	initRenderEngine(_renderobjectfile);
 	window->SetViewDirection(Vector2D(1,0));
 	window->SetViewPosition(Point2D(currentx, currentz));
+	window->setViewElevation(-6.0);
 }
 
 RenderEngine::~RenderEngine()
@@ -133,44 +141,74 @@ void RenderEngine::drawobject(int _objectid, Pose _position)
 	}
 }
 
+void RenderEngine::rotate(float _degrees)
+{
+	float radians = _degrees * PI / 180;
+	float angle;
+	angle = currangle.getAngle();
+	angle = angle + radians;
+	// The following conversions is to aid in the move function
+	// making it easy to detect the correct quadrant
+	// If angle is greater than 360, convert to same angle less than 360
+	while(angle >= RAD_360DEG)
+	{
+		angle = angle - RAD_360DEG;
+	}
+	// If angle is negatave, convert to same positive angle
+	while(angle <  0)
+	{
+		angle = angle + RAD_360DEG;
+	}
+	currangle.setAngle(angle);
+	window->SetViewDirection(currangle);
+}
+
 void RenderEngine::draw()
 {
-	bool run = true;
-	// Rotation testing
-	float delta = .1 * PI / 180;
-	//for(int i = 0; i < 450; i++)
-	while(run)
-	{
-		window->DrawLineInSpace(Point3D(0,-1,0),Point3D(1,-1,0));
-		drawobject(1, Pose(100, 0, 80, 0));
-		drawobject(2, Pose(120, 0, 100, 0));
-		drawobject(1, Pose(80, 0, 100, 0));
-		drawobject(2, Pose(100, 0, 100, 0));
-		window->SetViewDirection(currangle);
-		currangle.setAngle(currangle.getAngle() + delta);
-		cout << currangle.getAngle() * 180 / PI << endl;
-		window->DisplayNow();
-		Sleep(5);
-		if(GetAsyncKeyState(0x51) & 0x8000)
-			run = false;
-	}
-
-	 
-	float speed = .5;
-	currangle.setXY(1,1);
-	for(int i = 0; i < 400; i++)
-	{
-		cout << currangle.getAngle() * 180 / PI << endl;
-		currentz = currentz + speed * currangle.getY();
-		window->SetViewPosition(Point2D(currentx, currentz));
-		drawobject(1, Pose(100, 0, 80, 0));
-		drawobject(2, Pose(120, 0, 100, 0));
-		drawobject(1, Pose(80, 0, 100, 0));
-		drawobject(2, Pose(100, 0, 100, 0));
-		window->DisplayNow();
-		cout << currentz << endl;
-		Sleep(25);
-	}
-		
-	Sleep(10000);
+	window->DisplayNow();
 }
+
+void RenderEngine::move(float _speed)
+{
+	//_speed = -1 * _speed;
+	double radian = double(currangle.getAngle());
+	if(radian <= RAD_90DEG)
+	{
+		currentz = currentz - (_speed * sin(radian));
+		currentx = currentx + (_speed * cos(radian));
+	}
+	else if(radian <= RAD_180DEG)
+	{
+		currentz = currentz - (_speed * sin(RAD_180DEG - radian));
+		currentx = currentx - (_speed * cos(RAD_180DEG - radian));
+	}
+	else if(radian <= RAD_270DEG)
+	{
+		currentz = currentz + (_speed * sin(radian - RAD_180DEG));
+		currentx = currentx - (_speed * cos(radian - RAD_180DEG));
+	}
+	else if(radian <= RAD_360DEG)
+	{
+		currentz = currentz + (_speed * sin(RAD_360DEG - radian));
+		currentx = currentx + (_speed * cos(RAD_360DEG - radian));
+	}
+	window->SetViewPosition(Point2D(currentz, currentx));
+}
+void RenderEngine::displayXYZTheta()
+{
+	cout << "X: " << currentx << "  Z: " << currentz << "  Theta: " << currangle.getAngle() *180 / PI << endl;
+}
+	//float speed = .5;
+	//currangle.setXY(1,1);
+	//for(int i = 0; i < 400; i++)
+	//{
+	//	cout << currangle.getAngle() * 180 / PI << endl;
+	//	currentz = currentz + speed * currangle.getY();
+	//	window->SetViewPosition(Point2D(currentx, currentz));
+	//	drawobject(1, Pose(100, 0, 80, 0));
+	//	drawobject(2, Pose(120, 0, 100, 0));
+	//	drawobject(1, Pose(80, 0, 100, 0));
+	//	drawobject(2, Pose(100, 0, 100, 0));
+	//	window->DisplayNow();
+	//	cout << currentz << endl;
+	//	Sleep(25);

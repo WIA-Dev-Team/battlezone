@@ -23,8 +23,7 @@
 
 #include <list>
 
-/** 
- *	
+/** 	
  *	@author Ben Hubler
  *	@date 4/20/2011
  *	@version 1.0.0
