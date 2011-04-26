@@ -47,9 +47,6 @@
  */
 VirtualEnvironment::VirtualEnvironment()
 {
-	render_list = NULL;
-	srand ( time(NULL) );
-	generateEnv();
 }
 
 /**
@@ -66,10 +63,7 @@ VirtualEnvironment::VirtualEnvironment(const VirtualEnvironment &env)
  */
 VirtualEnvironment::VirtualEnvironment(RenderListPtr &_render_list, TankPtr &_tank)
 {
-	srand ( time(NULL) );
-	generateEnv();
-	render_list = _render_list;
-	add(_tank);
+	init(_tank,_render_list);
 }
 
 /**
@@ -79,6 +73,17 @@ VirtualEnvironment::~VirtualEnvironment()
 {
 	while(environment.size())
 		remove(0);
+}
+
+/**
+ *	
+ */
+void VirtualEnvironment::init(TankPtr &_tank,RenderListPtr _render_list)
+{
+	render_list = _render_list;
+	srand ( time(NULL) );
+	add(_tank);
+	generateEnv(100);
 }
 
 /**
@@ -184,15 +189,22 @@ void VirtualEnvironment::prune()
  *	is called.  currently just creates and add's one default 
  *	object.
  */
-void VirtualEnvironment::generateEnv()
+void VirtualEnvironment::generateEnv(const unsigned int &_max_objects)
 {
-	int num_objects;
-	int object_id;
-	//std::cout << "entered generateEnv" << std::endl;
-	ObjectPtr obj = new Object;
-	obj->setCoordinate(4,0,4);
-	obj->setHealth(5);
-	add(obj);
+	int num_objects = rand()%_max_objects;
+	int object_id,x,y,z,theta;
+	ObjectPtr obj;
+
+	for(int i=0;i<num_objects;i++)
+	{
+		x=(rand()%200)-100;
+		y=0;
+		z=(rand()%200)-100;
+		theta=rand()%360;
+		object_id=rand()%render_list->size();
+		obj = new Object(Pose::Pose(x,y,z,theta),10,object_id,false);
+		add(obj);
+	}
 	//std::cout << "health: " << obj->getHealth() << std::endl;
 }
 
@@ -298,7 +310,7 @@ float VirtualEnvironment::distanceBetween(ObjectPtr &_obj1, ObjectPtr &_obj2)
 /**
  *	Returns a pointer to the maintained Environment
  */
-vector<ObjectPtr>* VirtualEnvironment::getEnvironment()
+EnvironmentPtr VirtualEnvironment::getEnvironment()
 {
 	return &environment;
 }
