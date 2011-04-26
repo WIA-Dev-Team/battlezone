@@ -28,6 +28,8 @@
 #include "RenderEngine.h"
 #include "VirtualEnvironment.h"
 #include "RenderObject.h"
+#include "UserInput.h"
+
 const string RENDERTYPEXML="RenderTypes.xml";
 
 class Game

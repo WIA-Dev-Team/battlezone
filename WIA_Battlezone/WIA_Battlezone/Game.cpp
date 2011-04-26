@@ -37,7 +37,7 @@ void Game::startGame()
 	_tank = player.getTank();
 
 	// init renderobjects vector with xml file
-	renderEngine.initRenderObjects(renderobjects, RENDERTYPEXML);
+	renderEngine.initRenderObjects(&renderobjects, RENDERTYPEXML);
 	virtualEnvironment.init(_tank, &renderobjects);
 	renderEngine.drawobjects(virtualEnvironment.getEnvironment(),renderobjects);
 	renderEngine.draw();

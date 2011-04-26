@@ -48,12 +48,15 @@ int main(int argc, char* argv[])
 			{
 				gameloop = false;
 			}
-			if(char(*uikeyiter) == UserInputKey::ENTER_KEY)
-			{
-				//Do game stuff
-				cout << "Run Game Stuff" << endl;
-				game.startGame();
-			}
+
+			//if(char(*uikeyiter) == UserInputKey::ENTER_KEY)
+			//{
+			//	//Do game stuff
+			//	cout << "Run Game Stuff" << endl;
+			//	//game.startGame();
+			//	// Start game loop
+
+			//}
 			uikeyiter++;
 		}
 	}

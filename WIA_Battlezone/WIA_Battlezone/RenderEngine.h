@@ -43,7 +43,7 @@ public:
 	RenderEngine();
 	~RenderEngine();
 	void addRenderObject(RenderObject _renderobject);
-	void initRenderObjects(vector<RenderObject> _renderobjects, string _renderobjectfile);
+	void initRenderObjects(vector<RenderObject>* _renderobjects, string _renderobjectfile);
 	void drawobjects(vector<Object*>* _objects, vector<RenderObject> _renderobjects);
 	void rotate(float _degrees);
 	void move(float _speed);

@@ -79,7 +79,7 @@ RenderEngine::RenderEngine()
 	window->setViewElevation(-6.0);
 	//initRenderEngine(_renderobjects, _renderobjectfile);
 }
-void RenderEngine::initRenderObjects(vector<RenderObject> _renderobjects, string _renderobjectfile)
+void RenderEngine::initRenderObjects(vector<RenderObject>* _renderobjects, string _renderobjectfile)
 {
 	TiXmlElement *rootxml;
 	TiXmlElement *objectxml;
@@ -95,7 +95,7 @@ void RenderEngine::initRenderObjects(vector<RenderObject> _renderobjects, string
 	renderobjectsxml.LoadFile();
 	rootxml = renderobjectsxml.RootElement();
 	objectxml = rootxml->FirstChildElement("object");
-	_renderobjects.clear();
+	_renderobjects->clear();
 
 	while(objectxml != 0)
 	{
@@ -117,7 +117,7 @@ void RenderEngine::initRenderObjects(vector<RenderObject> _renderobjects, string
 			renderobject->addPoint(Point(float(*x),float(*y),float(*z)));
 			linexml = linexml->NextSiblingElement("line");
 		}
-		_renderobjects.push_back(*renderobject);
+		_renderobjects->push_back(*renderobject);
 		objectxml = objectxml->NextSiblingElement("object");
 	}
 	delete objectid;

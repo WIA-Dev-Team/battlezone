@@ -83,7 +83,7 @@ void VirtualEnvironment::init(TankPtr &_tank,RenderListPtr _render_list)
 	render_list = _render_list;
 	srand ( time(NULL) );
 	add(_tank);
-	generateEnv(100);
+	generateEnv(20);
 }
 
 /**
