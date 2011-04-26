@@ -28,7 +28,12 @@
  */
 Player::Player()
 {
-	lives = -1;
-	score = -1;
+	lives = 3;
+	score = 0;
+	tank = Tank();
 	
-}
+};
+bool Player::canFire()
+{
+	tank.canFire();
+};
