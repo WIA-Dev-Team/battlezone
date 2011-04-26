@@ -61,3 +61,14 @@ float Pose::getTheta()
 {
 	return theta;
 }
+
+Pose& Pose::operator=(Pose &_pose)
+{
+	if(!(this->getX() == _pose.getX() && this->getY() == _pose.getY() && 
+		this->getZ() == _pose.getZ() && this->getTheta() == _pose.getTheta()))
+	{
+		this->setPoint(_pose.getX(),_pose.getY(),_pose.getZ());
+		this->setTheta(_pose.getTheta());
+	}
+	return *this;
+}

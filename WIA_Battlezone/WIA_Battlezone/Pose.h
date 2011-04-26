@@ -37,6 +37,7 @@ public:
 	Pose(float _x, float _y, float _z,float _theta);
 	void setTheta(float _theta);
 	float getTheta();
+	Pose& operator=(Pose &_pose);
 private:
 	float theta;
 

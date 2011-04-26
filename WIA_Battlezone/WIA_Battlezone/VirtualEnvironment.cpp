@@ -20,6 +20,7 @@
 
 #include "VirtualEnvironment.h"
 #include <iostream>
+#include <cassert>
 
 #ifndef PI
 #define PI 3.14159
@@ -43,7 +44,8 @@
  */
 VirtualEnvironment::VirtualEnvironment()
 {
-	generateEnv();
+	render_list = NULL;
+	//generateEnv();
 }
 
 /**
@@ -51,7 +53,18 @@ VirtualEnvironment::VirtualEnvironment()
  */
 VirtualEnvironment::VirtualEnvironment(const VirtualEnvironment &env)
 {
+	render_list = env.render_list;
 	environment = env.environment;
+}
+
+/**
+ *	Init's the render engine with the render_list and the tank given
+ */
+VirtualEnvironment::VirtualEnvironment(RenderListPtr &_render_list, TankPtr &_tank)
+{
+	generateEnv();
+	render_list = _render_list;
+	add(_tank);
 }
 
 /**
@@ -60,14 +73,14 @@ VirtualEnvironment::VirtualEnvironment(const VirtualEnvironment &env)
 VirtualEnvironment::~VirtualEnvironment()
 {
 	while(environment.size())
-		remove(0); 
+		remove(0);
 }
 
 /**
  *	Attempts to move the passed tank to the passed pose. 
  *	returns false if failed. 
  */
-bool VirtualEnvironment::move(TankPtr &_tank, Pose &_pose)
+bool VirtualEnvironment::move(TankPtr &_tank, const float &_theta)
 {
 	ObjectPtr obj = _tank;
 	if(findObjectsNear(obj,1).size()) return false;
@@ -77,10 +90,16 @@ bool VirtualEnvironment::move(TankPtr &_tank, Pose &_pose)
 /**
  *	Fires the passed tank's gun, detects if it hits an object
  */
-bool VirtualEnvironment::fire(TankPtr &_tank)
+/*bool VirtualEnvironment::fire(TankPtr &_tank)
 {
+	ObjectPtr tank_obj = _tank;
+	vector<ObjectPtr> front_objects = findObjectsInFrontOf(tank_obj);
+	for(int i=0;i<front_objects.size();i++)
+	{
+		//if(front_objects[i])
+	}
 	return false;
-}
+}*/
 
 /**
  *	Check's to see if the object is valid and not already in 
@@ -102,6 +121,15 @@ void VirtualEnvironment::add(Object &_obj)
 {
 	ObjectPtr obj = new Object(_obj);
 	environment.push_back(obj);
+}
+
+/**
+ *	Add's the passed tank pointer to the virtual environment
+ */
+void VirtualEnvironment::add(TankPtr &_tank)
+{
+	ObjectPtr obj = _tank;
+	add(obj);
 }
 
 /**
@@ -153,9 +181,12 @@ void VirtualEnvironment::prune()
  */
 void VirtualEnvironment::generateEnv()
 {
+	int num_objects;
+	int object_id;
+
 	//std::cout << "entered generateEnv" << std::endl;
 	ObjectPtr obj = new Object;
-	obj->setCoordinate(4,4,0);
+	obj->setCoordinate(4,0,4);
 	obj->setHealth(5);
 	add(obj);
 	//std::cout << "health: " << obj->getHealth() << std::endl;
@@ -184,22 +215,38 @@ int VirtualEnvironment::numObjects() const
 }
 
 /**
- *	Returns a vector of object pointers containing all objects in front of the passed object, currently only works at the origin
+ *	Returns a vector of object pointers containing all objects in front of the passed object
  */
-vector<ObjectPtr> VirtualEnvironment::findObjectsInFrontOf(ObjectPtr &_obj)
+bool VirtualEnvironment::fire(TankPtr &_tank)
 {
-	vector<ObjectPtr> front_objects;
+	assert(render_list != NULL);
+
+	ObjectPtr tank = _tank;
 	Pose temp_pose;
+	ObjectPtr closest = NULL;
+	int max_dist;
 	for(unsigned int i=0;i<environment.size();i++)
 	{
-		if(environment[i]!=_obj)
+		if(environment[i]!=_tank)
 		{
-			temp_pose.setPoint(translatePose(environment[i]->getPose(),_obj->getPose().getTheta()));
+			temp_pose.setPoint(environment[i]->getPose().getX()-_tank->getPose().getX(),
+				environment[i]->getPose().getY()-_tank->getPose().getY(),
+				environment[i]->getPose().getZ()-_tank->getPose().getZ());
+			//cout << "translated (" << temp_pose.getX() << "," << temp_pose.getY() << "," << temp_pose.getZ() << ")\n";
 
-			if(temp_pose.getY()>0) front_objects.push_back(environment[i]);
+			temp_pose = translatePose(temp_pose,_tank->getPose().getTheta());
+			max_dist = (*render_list)[environment[i]->getObjectID()].getMaxDistance();
+			
+			if(temp_pose.getZ()>=0 && temp_pose.getX()>=-max_dist && temp_pose.getX()<=max_dist)
+			{
+				if(closest != NULL && distanceBetween(tank,environment[i])<distanceBetween(closest,tank))
+					closest = environment[i];
+				if(closest == NULL) closest = environment[i];
+			}
 		}
 	}
-	return front_objects;
+	//cout << "found " << front_objects.size() << " objects in front." << endl;
+	return false;
 }
 
 /**
@@ -212,7 +259,7 @@ vector<ObjectPtr> VirtualEnvironment::findObjectsNear(ObjectPtr &_obj, const flo
 	{
 		if(environment[i]!=_obj && distanceBetween(_obj,environment[i])<=_radius) near_objects.push_back(environment[i]);
 	}
-	cout << "found " << near_objects.size() << " near objects." << endl;
+	//cout << "found " << near_objects.size() << " near objects." << endl;
 	return near_objects;
 }
 
@@ -225,22 +272,22 @@ Pose VirtualEnvironment::translatePose(Pose _pose, const float &_degree)
 {
 	float x,y,z,theta;
 	//cout << _degree << endl;
-	x = ((float)cos(D2R(_degree))*_pose.getX()-(float)sin(D2R(_degree))*_pose.getY());
-	y = ((float)sin(D2R(_degree))*_pose.getX()+(float)cos(D2R(_degree))*_pose.getY());
+	x = ((float)cos(D2R(_degree))*_pose.getX()-(float)sin(D2R(_degree))*_pose.getZ());
+	z = ((float)sin(D2R(_degree))*_pose.getX()+(float)cos(D2R(_degree))*_pose.getZ());
 	theta = _pose.getTheta()+_degree;
-	z = 0;
+	y = 0;
 	if(x < .0001 && x > -.0001) x=0;
-	if(y < .0001 && y > -.0001) y=0;
+	if(z < .0001 && z > -.0001) z=0;
 	return Pose::Pose(x,y,z,theta);
 }
 
 /**
- *	
+ *	Returns the distance between the two passed object pointers.
  */
 float VirtualEnvironment::distanceBetween(ObjectPtr &_obj1, ObjectPtr &_obj2)
 {
 	float delta_x = _obj1->getPose().getX()-_obj2->getPose().getX();
-	float delta_y = _obj1->getPose().getY()-_obj2->getPose().getY();
+	float delta_z = _obj1->getPose().getZ()-_obj2->getPose().getZ();
 
-	return sqrt((delta_x*delta_x)+(delta_y*delta_y));
+	return sqrt((delta_x*delta_x)+(delta_z*delta_z));
 }

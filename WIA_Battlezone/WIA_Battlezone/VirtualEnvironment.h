@@ -23,11 +23,13 @@
 
 #include "Tank.h"
 #include <Vector>
+#include "RenderObject.h"
 
 using namespace std;
 
 #define ObjectPtr Object*
 #define TankPtr Tank*
+#define RenderListPtr vector<RenderObject>*
 
 /** 
  *	Header file for virtual environment
@@ -41,13 +43,15 @@ public:
 	//Constructors
 	VirtualEnvironment();
 	VirtualEnvironment(const VirtualEnvironment &env);
+	VirtualEnvironment(RenderListPtr &_render_list, TankPtr &_tank);
 	~VirtualEnvironment();
 
 	//Functional Methods
-	bool move(TankPtr &_tank, Pose &_pose);
+	bool move(TankPtr &_tank, const float& _theta);
 	bool fire(TankPtr &_tank);
 	void add(ObjectPtr &_obj);
 	void add(Object &_obj);
+	void add(TankPtr &_tank);
 	void remove(ObjectPtr &_obj);
 	void prune();
 	void generateEnv();
@@ -56,6 +60,7 @@ public:
 private:
 	vector<ObjectPtr> environment;
 	int findObject(ObjectPtr &_obj);
+	RenderListPtr render_list;
 	
 public:
 	vector<ObjectPtr> findObjectsInFrontOf(ObjectPtr &_obj);
