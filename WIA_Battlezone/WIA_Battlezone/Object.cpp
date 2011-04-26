@@ -66,7 +66,7 @@ void Object::setOrientation(float _theta)
 	pose.setTheta(_theta);
 }
 
-Pose Object::getPose()
+Pose& Object::getPose()
 {
 	return pose;
 }
@@ -101,4 +101,9 @@ void Object::setMovable(bool _movable)
 int Object::getHealth()
 {
 	return health;
+}
+
+int Object::getObjectID()
+{
+	return objectid;
 }

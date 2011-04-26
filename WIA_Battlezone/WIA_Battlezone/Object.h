@@ -41,9 +41,10 @@ public:
 	void setHealth(int _health);
 	void setObjectID(int _objectid);
 	void setMovable(bool _movable);
-	Pose getPose();
+	Pose& getPose();
 	bool isDestroyed();
 	int getHealth();
+	int getObjectID();
 private:
 	Pose pose;
 	int health;
