@@ -48,7 +48,22 @@ int main(int argc, char* argv[])
 			{
 				gameloop = false;
 			}
-
+			if(char(*uikeyiter) == UserInputKey::A_KEY)
+			{
+				game.rotateTank(-0.02);
+			}
+			if(char(*uikeyiter) == UserInputKey::D_KEY)
+			{
+				game.rotateTank(0.02);
+			}
+			if(char(*uikeyiter) == UserInputKey::W_KEY)
+			{
+				game.moveTank(0.02);
+			}
+			if(char(*uikeyiter) == UserInputKey::S_KEY)
+			{
+				game.moveTank(-0.02);
+			}
 			//if(char(*uikeyiter) == UserInputKey::ENTER_KEY)
 			//{
 			//	//Do game stuff
@@ -57,6 +72,7 @@ int main(int argc, char* argv[])
 			//	// Start game loop
 
 			//}
+			game.RenderEnvironment();
 			uikeyiter++;
 		}
 	}

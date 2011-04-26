@@ -41,12 +41,6 @@ void Game::startGame()
 	virtualEnvironment.init(_tank, &renderobjects);
 	renderEngine.drawobjects(virtualEnvironment.getEnvironment(),renderobjects);
 	renderEngine.draw();
-	//virtualEnvironment = VirtualEnvironment();
-
-	//renderEngine.initRenderEngine();
-
-
-
 };
 bool Game::RequestFire()
 {
@@ -55,4 +49,22 @@ bool Game::RequestFire()
  // this must be changed.
  return true;
 
+}
+
+void Game::moveTank(float _speed)
+{
+	renderEngine.move(_speed);
+}
+
+void Game::rotateTank(float _degrees)
+{
+	renderEngine.rotate(_degrees);
+}
+
+void Game::RenderEnvironment()
+{
+	Tank *_tank;
+	_tank = player.getTank();
+	renderEngine.drawobjects(virtualEnvironment.getEnvironment(),renderobjects);
+	renderEngine.draw();
 }

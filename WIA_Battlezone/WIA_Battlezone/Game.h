@@ -39,7 +39,8 @@ public:
 	void startGame();
 	void RenderEnvironment();
 	bool RequestFire();
-
+	void moveTank(float _speed);
+	void rotateTank(float _degrees);
 
 private:
 	VirtualEnvironment virtualEnvironment;

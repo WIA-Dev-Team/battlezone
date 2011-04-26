@@ -34,38 +34,13 @@ const float RAD_180DEG = 3.1415927;
 const float RAD_270DEG = 4.7123890;
 const float RAD_360DEG = 6.2831853;
 
-/**
- *	Default constructor
- */
-//RenderEngine::RenderEngine(int _argc, char* _argv[])
-//{
-//	currentx = 0.0;
-//	currentz = 0.0;
-//	currangle.setXY(1,0);
-//	window = new CS325Graphics(_argc, _argv);
-//	window->SetViewDirection(currangle);
-//	window->SetViewPosition(Point2D(currentx, currentz));
-//	window->setViewElevation(-6.0);
-//	renderobjects.clear();
-//}
-
-//RenderEngine::RenderEngine(int _argc, char* _argv[], string _renderobjectfile)
-//{
-//	currentx = 0.0;
-//	currentz = 0.0;
-//	currangle.setXY(1,0); 
-//	window = new CS325Graphics(_argc, _argv);
-//	//initRenderEngine(_renderobjectfile);
-//	window->SetViewDirection(Vector2D(1,0));
-//	window->SetViewPosition(Point2D(currentx, currentz));
-//	window->setViewElevation(-6.0);
-//}
 
 RenderEngine::~RenderEngine()
 {
 	delete window;
 	//add code to properly delete renderobjects vector of pointers
 }
+
 RenderEngine::RenderEngine()
 {
 	int _argc=0;
@@ -77,8 +52,8 @@ RenderEngine::RenderEngine()
 	window->SetViewDirection(Vector2D(1,0));
 	window->SetViewPosition(Point2D(currentx, currentz));
 	window->setViewElevation(-6.0);
-	//initRenderEngine(_renderobjects, _renderobjectfile);
 }
+
 void RenderEngine::initRenderObjects(vector<RenderObject>* _renderobjects, string _renderobjectfile)
 {
 	TiXmlElement *rootxml;
@@ -130,18 +105,13 @@ void RenderEngine::drawobjects(vector<Object*>* _objects, vector<RenderObject> _
 {
 	vector<RenderObject>::iterator renderobjectsiter;
 	vector<RenderObject>::iterator renderobjectsend;
-	//vector<Object*>*::iterator objectsiter;
-	//vector<Object*>*::iterator objectsend;
 
 	list<Point>::iterator piter;
 	int objectID;
 	Point3D point1;
 	Point3D point2;
 	Pose position;
-	//objectsiter = (_objects)->begin();
-	//objectsend = _objects->end();
 	for(int i = 0;i < _objects->size(); i++)
-	//while(objectsiter != objectsend)
 	{
 		objectID = (*_objects)[i]->getObjectID();
 		position = (*_objects)[i]->getPose();
@@ -166,8 +136,8 @@ void RenderEngine::drawobjects(vector<Object*>* _objects, vector<RenderObject> _
 				}
 			}
 			renderobjectsiter++;
+			window->DrawLineOnScreen(Point2D(-1,0),Point2D(1,0));
 		}
-		//objectsiter++;
 	}
 }
 
@@ -200,7 +170,6 @@ void RenderEngine::draw()
 
 void RenderEngine::move(float _speed)
 {
-	//_speed = -1 * _speed;
 	double radian = double(currangle.getAngle());
 	if(radian <= RAD_90DEG)
 	{
@@ -224,21 +193,8 @@ void RenderEngine::move(float _speed)
 	}
 	window->SetViewPosition(Point2D(currentz, currentx));
 }
+
 void RenderEngine::displayXYZTheta()
 {
 	cout << "X: " << currentx << "  Z: " << currentz << "  Theta: " << currangle.getAngle() *180 / PI << endl;
 }
-	//float speed = .5;
-	//currangle.setXY(1,1);
-	//for(int i = 0; i < 400; i++)
-	//{
-	//	cout << currangle.getAngle() * 180 / PI << endl;
-	//	currentz = currentz + speed * currangle.getY();
-	//	window->SetViewPosition(Point2D(currentx, currentz));
-	//	drawobject(1, Pose(100, 0, 80, 0));
-	//	drawobject(2, Pose(120, 0, 100, 0));
-	//	drawobject(1, Pose(80, 0, 100, 0));
-	//	drawobject(2, Pose(100, 0, 100, 0));
-	//	window->DisplayNow();
-	//	cout << currentz << endl;
-	//	Sleep(25);
