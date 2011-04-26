@@ -14,6 +14,7 @@
 #include <list>
 #include "Tank.h"
 #include "RenderEngine.h"
+#include "UserInput.h"
 
 #define SCREEN_TEST 100
 #define ROTATE_TEST 100
@@ -22,8 +23,36 @@
 const string RENDERTYPEXML="RenderTypes.xml";
 using namespace std;
 
-//int main(int argc, char* argv[])
-//{
-//	return (0);
-//}
+int main(int argc, char* argv[])
+{
+	UserInput uikey;
+	list<UserInputKey::UserInputKey>::iterator uikeyiter;
+	list<UserInputKey::UserInputKey>::iterator uikeyend;
+	list<UserInputKey::UserInputKey> *userinputkey;
+	userinputkey = uikey.getKeysDown();
+	uikeyiter = userinputkey->begin();
+	uikeyend = userinputkey->end();
+
+	bool gameloop = true;
+	while(gameloop)
+	{		
+		uikey.updateKeysDown();
+		uikeyiter = userinputkey->begin();
+		uikeyend = userinputkey->end();
+		while(uikeyiter != uikeyend)
+		{
+			if(char(*uikeyiter) == UserInputKey::Q_KEY)
+			{
+				gameloop = false;
+			}
+			if(char(*uikeyiter) == UserInputKey::ENTER_KEY)
+			{
+				//Do game stuff
+				cout << "Run Game Stuff" << endl;
+			}
+			uikeyiter++;
+		}
+	}
+	return (0);
+}
 

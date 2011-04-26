@@ -102,3 +102,8 @@ int Object::getHealth()
 {
 	return health;
 }
+
+int Object::getObjectID()
+{
+	return objectid;
+}

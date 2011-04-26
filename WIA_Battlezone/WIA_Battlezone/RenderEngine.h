@@ -38,18 +38,19 @@ using namespace std;
 class RenderEngine
 {
 public:
-	RenderEngine(int _argc, char* _argv[]);
-	RenderEngine(int _argc, char* _argv[], string _renderobjectfile);
+	//RenderEngine(int _argc, char* _argv[]);
+	//RenderEngine(int _argc, char* _argv[], string _renderobjectfile);
+	RenderEngine(vector<RenderObject> _renderobjects, string _renderobjectfile);
 	~RenderEngine();
 	void addRenderObject(RenderObject _renderobject);
-	void initRenderEngine(string _renderobjectfile);
-	void drawobject(int _objectid, Pose _position);
+	void initRenderEngine(vector<RenderObject> _renderobjects, string _renderobjectfile);
+	void drawobjects(vector<Object> _objects, vector<RenderObject> _renderobjects);
 	void rotate(float _degrees);
 	void move(float _speed);
 	void draw();
 	void displayXYZTheta();
 private:
-	vector<RenderObject> renderobjects;
+	//vector<RenderObject> renderobjects;
 	CS325Graphics *window;
 	float currentx;
 	float currentz;

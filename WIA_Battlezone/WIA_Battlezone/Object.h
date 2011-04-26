@@ -44,6 +44,7 @@ public:
 	Pose& getPose();
 	bool isDestroyed();
 	int getHealth();
+	int getObjectID();
 private:
 	Pose pose;
 	int health;

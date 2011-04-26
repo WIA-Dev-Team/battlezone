@@ -37,36 +37,49 @@ const float RAD_360DEG = 6.2831853;
 /**
  *	Default constructor
  */
-RenderEngine::RenderEngine(int _argc, char* _argv[])
-{
-	currentx = 0.0;
-	currentz = 0.0;
-	currangle.setXY(1,0);
-	window = new CS325Graphics(_argc, _argv);
-	window->SetViewDirection(currangle);
-	window->SetViewPosition(Point2D(currentx, currentz));
-	window->setViewElevation(-6.0);
-	renderobjects.clear();
-}
+//RenderEngine::RenderEngine(int _argc, char* _argv[])
+//{
+//	currentx = 0.0;
+//	currentz = 0.0;
+//	currangle.setXY(1,0);
+//	window = new CS325Graphics(_argc, _argv);
+//	window->SetViewDirection(currangle);
+//	window->SetViewPosition(Point2D(currentx, currentz));
+//	window->setViewElevation(-6.0);
+//	renderobjects.clear();
+//}
 
-RenderEngine::RenderEngine(int _argc, char* _argv[], string _renderobjectfile)
-{
-	currentx = 0.0;
-	currentz = 0.0;
-	currangle.setXY(1,0); 
-	window = new CS325Graphics(_argc, _argv);
-	initRenderEngine(_renderobjectfile);
-	window->SetViewDirection(Vector2D(1,0));
-	window->SetViewPosition(Point2D(currentx, currentz));
-	window->setViewElevation(-6.0);
-}
+//RenderEngine::RenderEngine(int _argc, char* _argv[], string _renderobjectfile)
+//{
+//	currentx = 0.0;
+//	currentz = 0.0;
+//	currangle.setXY(1,0); 
+//	window = new CS325Graphics(_argc, _argv);
+//	//initRenderEngine(_renderobjectfile);
+//	window->SetViewDirection(Vector2D(1,0));
+//	window->SetViewPosition(Point2D(currentx, currentz));
+//	window->setViewElevation(-6.0);
+//}
 
 RenderEngine::~RenderEngine()
 {
 	delete window;
 	//add code to properly delete renderobjects vector of pointers
 }
-void RenderEngine::initRenderEngine(string _renderobjectfile)
+RenderEngine::RenderEngine(vector<RenderObject> _renderobjects, string _renderobjectfile)
+{
+	int _argc=0;
+	char* _argv[5];
+	currentx = 0.0;
+	currentz = 0.0;
+	currangle.setXY(1,0); 
+	window = new CS325Graphics(_argc, _argv);
+	window->SetViewDirection(Vector2D(1,0));
+	window->SetViewPosition(Point2D(currentx, currentz));
+	window->setViewElevation(-6.0);
+	initRenderEngine(_renderobjects, _renderobjectfile);
+}
+void RenderEngine::initRenderEngine(vector<RenderObject> _renderobjects, string _renderobjectfile)
 {
 	TiXmlElement *rootxml;
 	TiXmlElement *objectxml;
@@ -103,7 +116,7 @@ void RenderEngine::initRenderEngine(string _renderobjectfile)
 			renderobject->addPoint(Point(float(*x),float(*y),float(*z)));
 			linexml = linexml->NextSiblingElement("line");
 		}
-		renderobjects.push_back(*renderobject);
+		_renderobjects.push_back(*renderobject);
 		objectxml = objectxml->NextSiblingElement("object");
 	}
 	delete objectid;
@@ -112,32 +125,47 @@ void RenderEngine::initRenderEngine(string _renderobjectfile)
 	delete z;
 }
 
-void RenderEngine::drawobject(int _objectid, Pose _position)
+void RenderEngine::drawobjects(vector<Object> _objects, vector<RenderObject> _renderobjects)
 {
-	vector<RenderObject>::iterator iter;
+	vector<RenderObject>::iterator renderobjectsiter;
+	vector<RenderObject>::iterator renderobjectsend;
+	vector<Object>::iterator objectsiter;
+	vector<Object>::iterator objectsend;
+
 	list<Point>::iterator piter;
+	int objectID;
 	Point3D point1;
 	Point3D point2;
-	iter = renderobjects.begin();
-	while(iter != renderobjects.end())
+	Pose position;
+	objectsiter = _objects.begin();
+	objectsend = _objects.end();
+	while(objectsiter != objectsend)
 	{
-		if(iter->getObjectID() == _objectid)
+		objectID = objectsiter->getObjectID();
+		position = objectsiter->getPose();
+		renderobjectsiter = _renderobjects.begin();
+		renderobjectsend = _renderobjects.end();
+		while(renderobjectsiter != renderobjectsend)
 		{
-			piter = iter->getPointsBegin();
-			while(piter != iter->getPointsEnd())
+			if(renderobjectsiter->getObjectID() == objectID)
 			{
-				point1.setXYZ(piter->getX() + _position.getX(), 
-					piter->getY() - _position.getY(),
-					piter->getZ() - _position.getZ());
-				piter++;
-				point2.setXYZ(piter->getX() + _position.getX(), 
-					piter->getY() - _position.getY(),
-					piter->getZ() - _position.getZ());
-				window->DrawLineInSpace(point1,point2);
-				piter++;
+				piter = renderobjectsiter->getPointsBegin();
+				while(piter != renderobjectsiter->getPointsEnd())
+				{
+					point1.setXYZ(piter->getX() + position.getX(), 
+						piter->getY() - position.getY(),
+						piter->getZ() - position.getZ());
+					piter++;
+					point2.setXYZ(piter->getX() + position.getX(), 
+						piter->getY() - position.getY(),
+						piter->getZ() - position.getZ());
+					window->DrawLineInSpace(point1,point2);
+					piter++;
+				}
 			}
+			renderobjectsiter++;
 		}
-		iter++;
+		objectsiter++;
 	}
 }
 
