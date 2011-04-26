@@ -26,12 +26,10 @@
 /**
  * Default Constructor 
  */
-Player::Player()
+Player::Player():tank()
 {
 	lives = 3;
-	score = 0;
-	tank = Tank();
-	
+	score = 0;	
 };
 bool Player::canFire()
 {

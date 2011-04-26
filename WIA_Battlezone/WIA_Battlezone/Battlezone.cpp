@@ -15,12 +15,13 @@
 #include "Tank.h"
 #include "RenderEngine.h"
 #include "UserInput.h"
+#include "Game.h"
 
 #define SCREEN_TEST 100
 #define ROTATE_TEST 100
 #define MOVE_TEST 100
 
-const string RENDERTYPEXML="RenderTypes.xml";
+//const string RENDERTYPEXML="RenderTypes.xml";
 using namespace std;
 
 int main(int argc, char* argv[])
@@ -32,6 +33,8 @@ int main(int argc, char* argv[])
 	userinputkey = uikey.getKeysDown();
 	uikeyiter = userinputkey->begin();
 	uikeyend = userinputkey->end();
+	Game game;
+	game.startGame();
 
 	bool gameloop = true;
 	while(gameloop)
@@ -49,6 +52,7 @@ int main(int argc, char* argv[])
 			{
 				//Do game stuff
 				cout << "Run Game Stuff" << endl;
+				game.startGame();
 			}
 			uikeyiter++;
 		}

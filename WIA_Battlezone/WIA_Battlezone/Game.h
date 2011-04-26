@@ -21,6 +21,8 @@
  *	@date 4/21/2011
  *	@version 1.0
  */
+#ifndef GAME_H
+#define GAME_H
 
 #include "Player.h"
 #include "RenderEngine.h"
@@ -43,3 +45,4 @@ private:
 	Player player;
 	vector<RenderObject> renderobjects;
 };
+#endif

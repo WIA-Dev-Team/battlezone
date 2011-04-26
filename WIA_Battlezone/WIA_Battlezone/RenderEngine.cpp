@@ -126,24 +126,25 @@ void RenderEngine::initRenderObjects(vector<RenderObject> _renderobjects, string
 	delete z;
 }
 
-void RenderEngine::drawobjects(vector<Object> _objects, vector<RenderObject> _renderobjects)
+void RenderEngine::drawobjects(vector<Object*>* _objects, vector<RenderObject> _renderobjects)
 {
 	vector<RenderObject>::iterator renderobjectsiter;
 	vector<RenderObject>::iterator renderobjectsend;
-	vector<Object>::iterator objectsiter;
-	vector<Object>::iterator objectsend;
+	//vector<Object*>*::iterator objectsiter;
+	//vector<Object*>*::iterator objectsend;
 
 	list<Point>::iterator piter;
 	int objectID;
 	Point3D point1;
 	Point3D point2;
 	Pose position;
-	objectsiter = _objects.begin();
-	objectsend = _objects.end();
-	while(objectsiter != objectsend)
+	//objectsiter = (_objects)->begin();
+	//objectsend = _objects->end();
+	for(int i = 0;i < _objects->size(); i++)
+	//while(objectsiter != objectsend)
 	{
-		objectID = objectsiter->getObjectID();
-		position = objectsiter->getPose();
+		objectID = (*_objects)[i]->getObjectID();
+		position = (*_objects)[i]->getPose();
 		renderobjectsiter = _renderobjects.begin();
 		renderobjectsend = _renderobjects.end();
 		while(renderobjectsiter != renderobjectsend)
@@ -166,7 +167,7 @@ void RenderEngine::drawobjects(vector<Object> _objects, vector<RenderObject> _re
 			}
 			renderobjectsiter++;
 		}
-		objectsiter++;
+		//objectsiter++;
 	}
 }
 
