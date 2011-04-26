@@ -25,6 +25,9 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define DEFAULT_MAX_NUM_OBJECTS 100
+#define DEFAULT_MAX_DIST		1000
+
 #ifndef PI
 #define PI 3.14159
 #endif
@@ -83,18 +86,24 @@ void VirtualEnvironment::init(TankPtr &_tank,RenderListPtr _render_list)
 	render_list = _render_list;
 	srand ( time(NULL) );
 	add(_tank);
-	generateEnv(20);
+	generateEnv(100,1000);
 }
 
-/**
- *	Attempts to move the passed tank to the passed pose. 
- *	returns false if failed. 
- */
-bool VirtualEnvironment::move(TankPtr &_tank, const float &_theta)
+bool VirtualEnvironment::move(TankPtr &_tank, const float& _degrees, const float &_speed)
 {
 	ObjectPtr obj = _tank;
-	if(findObjectsNear(obj,1).size()) return false;
-	return true;
+	Pose previous_pose = _tank->getPose();
+
+	float delta_x = cos(D2R(_degrees+90))*_speed;
+	float delta_z = sin(D2R(_degrees+90))*_speed;
+
+	_tank->getPose().setPoint(previous_pose.getX()+delta_x,previous_pose.getY(),previous_pose.getZ()-delta_z);
+	_tank->getPose().setTheta(previous_pose.getTheta()+_degrees);
+
+	vector<ObjectPtr> near_objects = findObjectsNear(obj,_speed);
+	if(!near_objects.size()) return true;
+	else _tank->getPose()=previous_pose;
+	return false;
 }
 
 /**
@@ -189,7 +198,7 @@ void VirtualEnvironment::prune()
  *	is called.  currently just creates and add's one default 
  *	object.
  */
-void VirtualEnvironment::generateEnv(const unsigned int &_max_objects)
+void VirtualEnvironment::generateEnv(const unsigned int &_max_objects,const unsigned int &_max_dist)
 {
 	int num_objects = rand()%_max_objects;
 	int object_id,x,y,z,theta;
@@ -197,9 +206,9 @@ void VirtualEnvironment::generateEnv(const unsigned int &_max_objects)
 
 	for(int i=0;i<num_objects;i++)
 	{
-		x=(rand()%200)-100;
+		x=(rand()%(_max_dist*2))-_max_dist;
 		y=0;
-		z=(rand()%200)-100;
+		z=(rand()%(_max_dist*2))-_max_dist;
 		theta=rand()%360;
 		object_id=rand()%render_list->size();
 		obj = new Object(Pose::Pose(x,y,z,theta),10,object_id,false);
