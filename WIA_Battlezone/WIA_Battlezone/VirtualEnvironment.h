@@ -38,10 +38,12 @@ using namespace std;
 class VirtualEnvironment
 {
 public:
+	//Constructors
 	VirtualEnvironment();
 	VirtualEnvironment(const VirtualEnvironment &env);
 	~VirtualEnvironment();
 
+	//Functional Methods
 	bool move(TankPtr &_tank, Pose &_pose);
 	bool fire(TankPtr &_tank);
 	void add(ObjectPtr &_obj);
@@ -49,13 +51,19 @@ public:
 	void remove(ObjectPtr &_obj);
 	void prune();
 	void generateEnv();
-
 	int numObjects() const;
 
 private:
 	vector<ObjectPtr> environment;
 	int findObject(ObjectPtr &_obj);
-	void remove(const int &_object_index);
+	
+public:
+	vector<ObjectPtr> findObjectsInFrontOf(ObjectPtr &_obj);
+	vector<ObjectPtr> findObjectsNear(ObjectPtr &_obj,const float &_radius);
+	Pose translatePose(Pose _pose, const float &_degree);
+	float distanceBetween(ObjectPtr &_obj1, ObjectPtr &_obj2);
+
+	void remove(const unsigned int &_object_index);
 	//boundry somehow...
 };
 

@@ -21,6 +21,13 @@
 #include "VirtualEnvironment.h"
 #include <iostream>
 
+#ifndef PI
+#define PI 3.14159
+#endif
+
+#ifndef D2R
+#define D2R(d) d*PI/180
+#endif
 /** 
  *	Source code for the virtual envirnoment, handles colisions, 
  *	move requests, fire requests, adding and removing objects, 
@@ -57,16 +64,18 @@ VirtualEnvironment::~VirtualEnvironment()
 }
 
 /**
- *	attempts to move the passed tank to the passed pose. 
- *	returns false if failed.
+ *	Attempts to move the passed tank to the passed pose. 
+ *	returns false if failed. 
  */
 bool VirtualEnvironment::move(TankPtr &_tank, Pose &_pose)
 {
-	return false;
+	ObjectPtr obj = _tank;
+	if(findObjectsNear(obj,1).size()) return false;
+	return true;
 }
 
 /**
- *	fires the passed tank's gun, detects if it hits an object
+ *	Fires the passed tank's gun, detects if it hits an object
  */
 bool VirtualEnvironment::fire(TankPtr &_tank)
 {
@@ -85,7 +94,9 @@ void VirtualEnvironment::add(ObjectPtr &_obj)
 }
 
 /**
- *	Create's a deep copy of passed object.
+ *	Create's a deep copy of the passed object and adds it to the environment.
+ *
+ *	This will ALWAYS create a new object in the environment
  */
 void VirtualEnvironment::add(Object &_obj)
 {
@@ -95,7 +106,7 @@ void VirtualEnvironment::add(Object &_obj)
 
 /**
  *	Find's the object in the environment, remvoes from vector,
- *	and deletes the object itself. Given a pointer to an object.
+ *	and deletes the object itself. Passed a pointer to an object.
  */
 void VirtualEnvironment::remove(ObjectPtr &_obj)
 {
@@ -107,25 +118,25 @@ void VirtualEnvironment::remove(ObjectPtr &_obj)
 }
 
 /**
- *	Find's the object in the environment, remvoes from vector,
- *	and deletes the object itself. Given the index of the object
+ *	Find's the object in the environment, removes from vector,
+ *	and deletes the object itself. Passed the index of the object
  *	in the vector. This is cheaper than passing the pointer 
- *	to the object.
+ *	to the object because no search is needed.
  */
-void VirtualEnvironment::remove(const int &_object_index)
+void VirtualEnvironment::remove(const unsigned int &_object_index)
 {
-	if(_object_index >= environment.size() || _object_index < 0) return;
+	if(_object_index >= environment.size() || _object_index < (unsigned) 0) return;
 	delete environment[_object_index];
 	environment.erase(environment.begin()+_object_index);
 }
 
 /**
- *	parses through the environment vector and removes all 
- *	destroyed objects
+ *	Parses through the environment vector and removes all 
+ *	destroyed objects.
  */
 void VirtualEnvironment::prune()
 {
-	for(int i = 0;i < environment.size();i++)
+	for(unsigned int i = 0;i < environment.size();i++)
 	{
 		if(environment[i]->isDestroyed()) 
 		{
@@ -144,14 +155,15 @@ void VirtualEnvironment::generateEnv()
 {
 	//std::cout << "entered generateEnv" << std::endl;
 	ObjectPtr obj = new Object;
-	//obj->setHealth(5);
+	obj->setCoordinate(4,4,0);
+	obj->setHealth(5);
 	add(obj);
 	//std::cout << "health: " << obj->getHealth() << std::endl;
 }
 
 /**
  *	returns the index of the object pointer in the environments
- *	vector of objects, -1 if object not found.
+ *	vector of objects, -1 if object is not found.
  */
 int VirtualEnvironment::findObject(ObjectPtr &_obj)
 {
@@ -169,4 +181,66 @@ int VirtualEnvironment::findObject(ObjectPtr &_obj)
 int VirtualEnvironment::numObjects() const
 {
 	return environment.size();
+}
+
+/**
+ *	Returns a vector of object pointers containing all objects in front of the passed object, currently only works at the origin
+ */
+vector<ObjectPtr> VirtualEnvironment::findObjectsInFrontOf(ObjectPtr &_obj)
+{
+	vector<ObjectPtr> front_objects;
+	Pose temp_pose;
+	for(unsigned int i=0;i<environment.size();i++)
+	{
+		if(environment[i]!=_obj)
+		{
+			temp_pose.setPoint(translatePose(environment[i]->getPose(),_obj->getPose().getTheta()));
+
+			if(temp_pose.getY()>0) front_objects.push_back(environment[i]);
+		}
+	}
+	return front_objects;
+}
+
+/**
+ *	Returns a vector of all objects within _radius units of passed object
+ */
+vector<ObjectPtr> VirtualEnvironment::findObjectsNear(ObjectPtr &_obj, const float &_radius)
+{
+	vector<ObjectPtr> near_objects;
+	for(unsigned int i=0;i<environment.size();i++)
+	{
+		if(environment[i]!=_obj && distanceBetween(_obj,environment[i])<=_radius) near_objects.push_back(environment[i]);
+	}
+	cout << "found " << near_objects.size() << " near objects." << endl;
+	return near_objects;
+}
+
+/**
+ *	Returns a Pose rotated about _degrees
+ *
+ *	rotates _pose to a new coordinate system _degree's offset from origin
+ */
+Pose VirtualEnvironment::translatePose(Pose _pose, const float &_degree)
+{
+	float x,y,z,theta;
+	//cout << _degree << endl;
+	x = ((float)cos(D2R(_degree))*_pose.getX()-(float)sin(D2R(_degree))*_pose.getY());
+	y = ((float)sin(D2R(_degree))*_pose.getX()+(float)cos(D2R(_degree))*_pose.getY());
+	theta = _pose.getTheta()+_degree;
+	z = 0;
+	if(x < .0001 && x > -.0001) x=0;
+	if(y < .0001 && y > -.0001) y=0;
+	return Pose::Pose(x,y,z,theta);
+}
+
+/**
+ *	
+ */
+float VirtualEnvironment::distanceBetween(ObjectPtr &_obj1, ObjectPtr &_obj2)
+{
+	float delta_x = _obj1->getPose().getX()-_obj2->getPose().getX();
+	float delta_y = _obj1->getPose().getY()-_obj2->getPose().getY();
+
+	return sqrt((delta_x*delta_x)+(delta_y*delta_y));
 }

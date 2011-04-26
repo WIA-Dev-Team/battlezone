@@ -66,7 +66,7 @@ void Object::setOrientation(float _theta)
 	pose.setTheta(_theta);
 }
 
-Pose Object::getPose()
+Pose& Object::getPose()
 {
 	return pose;
 }
