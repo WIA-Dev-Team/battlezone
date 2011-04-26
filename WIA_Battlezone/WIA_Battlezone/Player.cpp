@@ -40,10 +40,12 @@ bool Player::canFire()
 	return true;
 };
 
-void Player::getTank()
+Tank *Player::getTank()
 {
+	return &tank;
 }
-void Player::getPose()
+
+Pose *Player::getPose()
 {
-	tank.getPose();
+	return &tank.getPose();
 }

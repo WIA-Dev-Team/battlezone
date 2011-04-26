@@ -26,11 +26,18 @@
 /**
  * Start Game Method intialize components
  */
+Game::Game()
+{
+
+}
 void Game::startGame()
 {
-	player = Player();
-	renderEngine = RenderEngine(renderobjects, RENDERTYPEXML);
-	virtualEnvironment = VirtualEnvironment();
+	//initplayer.
+
+	// init renderobjects vector with xml file
+	renderEngine.initRenderObjects(renderobjects, RENDERTYPEXML);
+	//virtualEnvironment.init(player.getTank(), &renderobjects);
+	//virtualEnvironment = VirtualEnvironment();
 
 	//renderEngine.initRenderEngine();
 

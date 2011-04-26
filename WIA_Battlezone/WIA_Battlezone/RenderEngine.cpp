@@ -66,7 +66,7 @@ RenderEngine::~RenderEngine()
 	delete window;
 	//add code to properly delete renderobjects vector of pointers
 }
-RenderEngine::RenderEngine(vector<RenderObject> _renderobjects, string _renderobjectfile)
+RenderEngine::RenderEngine()
 {
 	int _argc=0;
 	char* _argv[5];
@@ -77,9 +77,9 @@ RenderEngine::RenderEngine(vector<RenderObject> _renderobjects, string _renderob
 	window->SetViewDirection(Vector2D(1,0));
 	window->SetViewPosition(Point2D(currentx, currentz));
 	window->setViewElevation(-6.0);
-	initRenderEngine(_renderobjects, _renderobjectfile);
+	//initRenderEngine(_renderobjects, _renderobjectfile);
 }
-void RenderEngine::initRenderEngine(vector<RenderObject> _renderobjects, string _renderobjectfile)
+void RenderEngine::initRenderObjects(vector<RenderObject> _renderobjects, string _renderobjectfile)
 {
 	TiXmlElement *rootxml;
 	TiXmlElement *objectxml;
@@ -95,7 +95,8 @@ void RenderEngine::initRenderEngine(vector<RenderObject> _renderobjects, string 
 	renderobjectsxml.LoadFile();
 	rootxml = renderobjectsxml.RootElement();
 	objectxml = rootxml->FirstChildElement("object");
-	
+	_renderobjects.clear();
+
 	while(objectxml != 0)
 	{
 		objectxml->Attribute("id", objectid);

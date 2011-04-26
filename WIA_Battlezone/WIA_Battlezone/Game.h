@@ -31,6 +31,7 @@ const string RENDERTYPEXML="RenderTypes.xml";
 class Game
 {
 public:
+	Game();
 	void startGame();
 	void RenderEnvironment();
 	bool RequestFire();
