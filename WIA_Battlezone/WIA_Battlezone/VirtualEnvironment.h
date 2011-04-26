@@ -57,6 +57,8 @@ public:
 	void generateEnv();
 	int numObjects() const;
 
+	vector<ObjectPtr>* VirtualEnvironment::getEnvironment();
+
 private:
 	vector<ObjectPtr> environment;
 	int findObject(ObjectPtr &_obj);

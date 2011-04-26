@@ -21,6 +21,9 @@
 #include "VirtualEnvironment.h"
 #include <iostream>
 #include <cassert>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #ifndef PI
 #define PI 3.14159
@@ -45,7 +48,8 @@
 VirtualEnvironment::VirtualEnvironment()
 {
 	render_list = NULL;
-	//generateEnv();
+	srand ( time(NULL) );
+	generateEnv();
 }
 
 /**
@@ -62,6 +66,7 @@ VirtualEnvironment::VirtualEnvironment(const VirtualEnvironment &env)
  */
 VirtualEnvironment::VirtualEnvironment(RenderListPtr &_render_list, TankPtr &_tank)
 {
+	srand ( time(NULL) );
 	generateEnv();
 	render_list = _render_list;
 	add(_tank);
@@ -183,7 +188,6 @@ void VirtualEnvironment::generateEnv()
 {
 	int num_objects;
 	int object_id;
-
 	//std::cout << "entered generateEnv" << std::endl;
 	ObjectPtr obj = new Object;
 	obj->setCoordinate(4,0,4);
@@ -289,4 +293,12 @@ float VirtualEnvironment::distanceBetween(ObjectPtr &_obj1, ObjectPtr &_obj2)
 	float delta_z = _obj1->getPose().getZ()-_obj2->getPose().getZ();
 
 	return sqrt((delta_x*delta_x)+(delta_z*delta_z));
+}
+
+/**
+ *	Returns a pointer to the maintained Environment
+ */
+vector<ObjectPtr>* VirtualEnvironment::getEnvironment()
+{
+	return &environment;
 }
