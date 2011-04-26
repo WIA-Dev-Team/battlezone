@@ -30,6 +30,7 @@ using namespace std;
 #define ObjectPtr Object*
 #define TankPtr Tank*
 #define RenderListPtr vector<RenderObject>*
+#define EnvironmentPtr vector<ObjectPtr>*
 
 /** 
  *	Header file for virtual environment
@@ -46,6 +47,8 @@ public:
 	VirtualEnvironment(RenderListPtr &_render_list, TankPtr &_tank);
 	~VirtualEnvironment();
 
+	void VirtualEnvironment::init(TankPtr &_tank,RenderListPtr _render_list);
+
 	//Functional Methods
 	bool move(TankPtr &_tank, const float& _theta);
 	bool fire(TankPtr &_tank);
@@ -54,10 +57,10 @@ public:
 	void add(TankPtr &_tank);
 	void remove(ObjectPtr &_obj);
 	void prune();
-	void generateEnv();
+	void generateEnv(const unsigned int &_max_objects);
 	int numObjects() const;
 
-	vector<ObjectPtr>* VirtualEnvironment::getEnvironment();
+	EnvironmentPtr VirtualEnvironment::getEnvironment();
 
 private:
 	vector<ObjectPtr> environment;
