@@ -50,14 +50,14 @@ public:
 	void VirtualEnvironment::init(TankPtr &_tank,RenderListPtr _render_list);
 
 	//Functional Methods
-	bool move(TankPtr &_tank, const float& _theta);
+	bool move(TankPtr &_tank, const float& _degrees, const float &_speed);
 	bool fire(TankPtr &_tank);
 	void add(ObjectPtr &_obj);
 	void add(Object &_obj);
 	void add(TankPtr &_tank);
 	void remove(ObjectPtr &_obj);
 	void prune();
-	void generateEnv(const unsigned int &_max_objects);
+	void generateEnv(const unsigned int &_max_objects,const unsigned int &_max_dist);
 	int numObjects() const;
 
 	EnvironmentPtr VirtualEnvironment::getEnvironment();
