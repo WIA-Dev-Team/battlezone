@@ -50,19 +50,19 @@ int main(int argc, char* argv[])
 			}
 			if(char(*uikeyiter) == UserInputKey::A_KEY)
 			{
-				game.rotateTank(-0.02);
+				game.rotateTank(-0.1);
 			}
 			if(char(*uikeyiter) == UserInputKey::D_KEY)
 			{
-				game.rotateTank(0.02);
+				game.rotateTank(0.1);
 			}
 			if(char(*uikeyiter) == UserInputKey::W_KEY)
 			{
-				game.moveTank(0.02);
+				game.moveTank(0.1);
 			}
 			if(char(*uikeyiter) == UserInputKey::S_KEY)
 			{
-				game.moveTank(-0.02);
+				game.moveTank(-0.1);
 			}
 			//if(char(*uikeyiter) == UserInputKey::ENTER_KEY)
 			//{

@@ -53,12 +53,22 @@ bool Game::RequestFire()
 
 void Game::moveTank(float _speed)
 {
-	renderEngine.move(_speed);
+	Tank *_tank;
+	_tank = player.getTank();
+	if(virtualEnvironment.move(_tank,0,_speed))
+	{
+		renderEngine.move(_speed);
+	}
 }
 
 void Game::rotateTank(float _degrees)
 {
-	renderEngine.rotate(_degrees);
+	Tank *_tank;
+	_tank = player.getTank();
+	if(virtualEnvironment.move(_tank,_degrees,0))
+	{
+		renderEngine.rotate(_degrees);
+	}
 }
 
 void Game::RenderEnvironment()

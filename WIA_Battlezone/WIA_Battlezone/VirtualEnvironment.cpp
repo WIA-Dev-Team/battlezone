@@ -85,7 +85,7 @@ void VirtualEnvironment::init(TankPtr &_tank,RenderListPtr _render_list)
 {
 	render_list = _render_list;
 	srand ( time(NULL) );
-	add(_tank);
+	add(_tank); 
 	generateEnv(100,1000);
 }
 
@@ -94,15 +94,19 @@ bool VirtualEnvironment::move(TankPtr &_tank, const float& _degrees, const float
 	ObjectPtr obj = _tank;
 	Pose previous_pose = _tank->getPose();
 
+	cout << "(" << previous_pose.getX() << "," << previous_pose.getY() << "," << previous_pose.getZ() << ") " << previous_pose.getTheta() << endl; 
+
 	float delta_x = cos(D2R(_degrees+90))*_speed;
 	float delta_z = sin(D2R(_degrees+90))*_speed;
 
 	_tank->getPose().setPoint(previous_pose.getX()+delta_x,previous_pose.getY(),previous_pose.getZ()-delta_z);
 	_tank->getPose().setTheta(previous_pose.getTheta()+_degrees);
 
-	vector<ObjectPtr> near_objects = findObjectsNear(obj,_speed);
-	if(!near_objects.size()) return true;
-	else _tank->getPose()=previous_pose;
+	vector<ObjectPtr> near_objects = findObjectsNear(obj,_speed+7.5);
+	if(!near_objects.size())
+		return true;
+	else 
+		_tank->getPose()=previous_pose;
 	return false;
 }
 
