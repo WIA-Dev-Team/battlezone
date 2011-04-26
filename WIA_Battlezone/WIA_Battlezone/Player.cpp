@@ -37,3 +37,11 @@ bool Player::canFire()
 {
 	tank.canFire();
 };
+
+void Player::getTank()
+{
+}
+void Player::getPose()
+{
+	tank.getPose();
+}

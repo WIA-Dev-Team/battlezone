@@ -32,7 +32,8 @@ public:
 	Player();
 
 	bool canFire();
-;
+	void getTank();
+	void getPose();
 
 private:
 	int lives;

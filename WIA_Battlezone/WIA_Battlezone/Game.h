@@ -25,16 +25,19 @@
 #include "Player.h"
 #include "RenderEngine.h"
 #include "VirtualEnvironment.h"
+#include "RenderObject.h"
 
 class Game
 {
 public:
 	void startGame();
+	void RenderEnvironment();
+	bool RequestFire();
 
 
 private:
-	VirtualEnvironment virutalEnvironment;
+	VirtualEnvironment virtualEnvironment;
 	RenderEngine renderEngine;
 	Player player;
-
+	vector<RenderObject> renderobjects;
 };
