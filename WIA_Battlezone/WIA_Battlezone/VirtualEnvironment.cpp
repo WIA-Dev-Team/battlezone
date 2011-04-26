@@ -224,7 +224,7 @@ bool VirtualEnvironment::fire(TankPtr &_tank)
 	ObjectPtr tank = _tank;
 	Pose temp_pose;
 	ObjectPtr closest = NULL;
-	int max_dist;
+	double max_dist;
 	for(unsigned int i=0;i<environment.size();i++)
 	{
 		if(environment[i]!=_tank)
