@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\xmlParser">
+      <UniqueIdentifier>{2c692da4-2dea-4d2a-ad51-2671b4ca57de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\cs325graphics">
+      <UniqueIdentifier>{e29fd673-595f-41c9-a7fe-d3c534a43644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\cs325graphics">
+      <UniqueIdentifier>{25d4b2ef-ae72-4510-a32f-112d1eb60f66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xmlParser">
+      <UniqueIdentifier>{aa788e71-a1b0-4a96-9964-2f32fddf334b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Battlezone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pose.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vector3d.cpp">
+      <Filter>Source Files\cs325graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="vector2d.cpp">
+      <Filter>Source Files\cs325graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="point3d.cpp">
+      <Filter>Source Files\cs325graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="point2d.cpp">
+      <Filter>Source Files\cs325graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="xmlParser\tinystr.cpp">
+      <Filter>Source Files\xmlParser</Filter>
+    </ClCompile>
+    <ClCompile Include="xmlParser\tinyxml.cpp">
+      <Filter>Source Files\xmlParser</Filter>
+    </ClCompile>
+    <ClCompile Include="xmlParser\tinyxmlerror.cpp">
+      <Filter>Source Files\xmlParser</Filter>
+    </ClCompile>
+    <ClCompile Include="xmlParser\tinyxmlparser.cpp">
+      <Filter>Source Files\xmlParser</Filter>
+    </ClCompile>
+    <ClCompile Include="testdriver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Point.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pose.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xmlParser\tinystr.h">
+      <Filter>Header Files\xmlParser</Filter>
+    </ClInclude>
+    <ClInclude Include="xmlParser\tinyxml.h">
+      <Filter>Header Files\xmlParser</Filter>
+    </ClInclude>
+    <ClInclude Include="cs325graphics.h">
+      <Filter>Header Files\cs325graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="freeglut.h">
+      <Filter>Header Files\cs325graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="freeglut_ext.h">
+      <Filter>Header Files\cs325graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="freeglut_std.h">
+      <Filter>Header Files\cs325graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="glut.h">
+      <Filter>Header Files\cs325graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="point2d.h">
+      <Filter>Header Files\cs325graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="point3d.h">
+      <Filter>Header Files\cs325graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files\cs325graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="vector2d.h">
+      <Filter>Header Files\cs325graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="vector3d.h">
+      <Filter>Header Files\cs325graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="cs325graphics.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RenderTypes.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

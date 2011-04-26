@@ -15,29 +15,32 @@
  */
 
 /**
- *	@file Player.cpp
- *	@headerfile "Tank.h" "Object.h"
+ *	@file Player.h
+ *	@headerfile "Tank.h"
  *	@author Justin Barnard
  *	@date 4/21/2011
  *	@version 1.0
  */
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include "Tank.h"
-#include "Object.h"
-
 
 class Player
 {
 public:
 	Player();
+
 	bool canFire();
-	Tank getTank();
-	Object getPose();
+	void getTank();
+	void getPose();
 
 private:
 	int lives;
 	int score;
-	Tank Tank();
+	Tank tank;
+	
 	
 
 };
+#endif

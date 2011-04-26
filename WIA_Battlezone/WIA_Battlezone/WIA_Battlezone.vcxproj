@@ -97,6 +97,7 @@
     <ClInclude Include="freeglut.h" />
     <ClInclude Include="freeglut_ext.h" />
     <ClInclude Include="freeglut_std.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="glut.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Point.h" />
