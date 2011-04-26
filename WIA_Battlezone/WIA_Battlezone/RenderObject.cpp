@@ -108,3 +108,8 @@ void RenderObject::setMaxDistance(double _maxdist)
 {
 	maxdist = _maxdist;
 }
+
+double RenderObject::getMaxDistance()
+{
+	return maxdist;
+}

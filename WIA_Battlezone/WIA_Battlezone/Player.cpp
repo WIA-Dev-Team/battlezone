@@ -36,6 +36,8 @@ Player::Player()
 bool Player::canFire()
 {
 	tank.canFire();
+	// this must be changed
+	return true;
 };
 
 void Player::getTank()

@@ -236,7 +236,6 @@ bool VirtualEnvironment::fire(TankPtr &_tank)
 
 			temp_pose = translatePose(temp_pose,_tank->getPose().getTheta());
 			max_dist = (*render_list)[environment[i]->getObjectID()].getMaxDistance();
-			
 			if(temp_pose.getZ()>=0 && temp_pose.getX()>=-max_dist && temp_pose.getX()<=max_dist)
 			{
 				if(closest != NULL && distanceBetween(tank,environment[i])<distanceBetween(closest,tank))

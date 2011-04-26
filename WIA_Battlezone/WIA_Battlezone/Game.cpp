@@ -29,10 +29,10 @@
 void Game::startGame()
 {
 	player = Player();
-	renderEngine = RenderEngine(argc, argv);
+	renderEngine = RenderEngine(renderobjects, RENDERTYPEXML);
 	virtualEnvironment = VirtualEnvironment();
 
-	renderEngine.initRenderEngine();
+	//renderEngine.initRenderEngine();
 
 
 
@@ -41,5 +41,7 @@ bool Game::RequestFire()
 {
 
  player.canFire();
+ // this must be changed.
+ return true;
 
 }
