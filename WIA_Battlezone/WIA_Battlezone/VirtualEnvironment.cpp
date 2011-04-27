@@ -79,7 +79,8 @@ VirtualEnvironment::~VirtualEnvironment()
 }
 
 /**
- *	
+ *	Initizlizes the virtual environment, seeds random, assigns 
+ *	the tank and render list pointers and generates a random environment
  */
 void VirtualEnvironment::init(TankPtr &_tank,RenderListPtr _render_list)
 {
@@ -89,6 +90,11 @@ void VirtualEnvironment::init(TankPtr &_tank,RenderListPtr _render_list)
 	generateEnv(DEFAULT_MAX_NUM_OBJECTS,DEFAULT_MAX_DIST);
 }
 
+/**
+ *	Broken Code! Doesn't work!
+ *	Moves the passed tank at angular velocity _degrees and forward _speed.  
+ *	Returns false if a collision is detected and does not move the tank.
+ */
 bool VirtualEnvironment::move(TankPtr &_tank, const float& _degrees, const float &_speed)
 {
 	ObjectPtr obj = _tank;
@@ -244,7 +250,8 @@ int VirtualEnvironment::numObjects() const
 }
 
 /**
- *	Returns a vector of object pointers containing all objects in front of the passed object
+ *	BROKEN!! DOESNT WORK!
+ *	attempts to fire the tank's gun and damage the first thing it hits.
  */
 bool VirtualEnvironment::fire(TankPtr &_tank)
 {
