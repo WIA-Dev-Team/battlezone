@@ -16,10 +16,6 @@
 
 /**
  *	@file Game.h
- *	@headerfile "Player.h" "RenderEngine.h" "VirtualEnvironment.h"
- *	@author Justin Barnard
- *	@date 4/21/2011
- *	@version 1.0
  */
 #ifndef GAME_H
 #define GAME_H
@@ -32,6 +28,13 @@
 
 const string RENDERTYPEXML="RenderTypes.xml";
 
+/**
+ *	A class used to control all functionality of the battlezone game.
+ *	@author Justin Barnard
+ *	@author Ben Hubler
+ *	@date 4/26/2011
+ *	@version 1.0.2
+ */
 class Game
 {
 public:

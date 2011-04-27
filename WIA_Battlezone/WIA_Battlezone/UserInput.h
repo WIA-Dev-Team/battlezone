@@ -23,7 +23,10 @@
 
 #include <list>
 
-/** 	
+
+/**
+ *	@namespace UserInputKey
+ *	This namespace is used to clarify the enum UserInputKey
  *	@author Ben Hubler
  *	@date 4/20/2011
  *	@version 1.0.0
@@ -43,7 +46,12 @@ namespace UserInputKey
 }
 
 using namespace std;
-
+/**
+ *	A class that is used to retrieve asynchronous input from the user.
+ *	@author Ben Hubler
+ *	@date 4/20/2011
+ *	@version 1.0.0
+ */
 class UserInput
 {
 public:

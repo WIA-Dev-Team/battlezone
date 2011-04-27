@@ -34,13 +34,19 @@ const float RAD_180DEG = 3.1415927;
 const float RAD_270DEG = 4.7123890;
 const float RAD_360DEG = 6.2831853;
 
-
+/**
+ *	Default destructor
+ */
 RenderEngine::~RenderEngine()
 {
 	delete window;
 	//add code to properly delete renderobjects vector of pointers
 }
 
+/**
+ *	Default construction
+ *	sets currentx, z, and angles to 0 and raises view elevation to 6
+ */
 RenderEngine::RenderEngine()
 {
 	int _argc=0;
@@ -54,6 +60,11 @@ RenderEngine::RenderEngine()
 	window->setViewElevation(-6.0);
 }
 
+/**
+ *	Function used to populate the renderobjects vector with an xml file
+ *	@param _renderobjects is a pointer to a vector of RenderObject used to store directions on how to draw objects
+ *	@param _rederobjectfile is a string representing the location of the xml file with direction on how to draw objects
+ */
 void RenderEngine::initRenderObjects(vector<RenderObject>* _renderobjects, string _renderobjectfile)
 {
 	TiXmlElement *rootxml;
@@ -101,6 +112,11 @@ void RenderEngine::initRenderObjects(vector<RenderObject>* _renderobjects, strin
 	delete z;
 }
 
+/**
+ *	Function used to draw all objects in a vector of object pointers that are related to renderobjects
+ *	@param _objects is a vector of Object pointers that contains a list of all objects to draw
+ *	@param _renderobjects is a vector of RenderObject that contain the direction of how to draw each object
+ */
 void RenderEngine::drawobjects(vector<Object*>* _objects, vector<RenderObject> _renderobjects)
 {
 	vector<RenderObject>::iterator renderobjectsiter;
@@ -143,6 +159,10 @@ void RenderEngine::drawobjects(vector<Object*>* _objects, vector<RenderObject> _
 	}
 }
 
+/**
+ *	Function used to set the rotation of the view
+ *	@param _degrees is a float that represents the change in degress the view will rotate
+ */
 void RenderEngine::rotate(float _degrees)
 {
 	float radians = _degrees * PI / 180;
@@ -165,14 +185,23 @@ void RenderEngine::rotate(float _degrees)
 	window->SetViewDirection(currangle);
 }
 
+/**
+ *	Function used to display the currently drawn window
+ */
 void RenderEngine::draw()
 {
 	window->DisplayNow();
 }
 
+/**
+ *	Function used to move the view
+ *	@param _speed is a float representing the distance the view will move during this cycle
+ */
 void RenderEngine::move(float _speed)
 {
 	double radian = double(currangle.getAngle());
+	//Determine which quadrant the move is in and perform the calcualtion to find
+	//new x and z coordinates
 	if(radian <= RAD_90DEG)
 	{
 		currentz = currentz - (_speed * sin(radian));
@@ -196,6 +225,9 @@ void RenderEngine::move(float _speed)
 	window->SetViewPosition(Point2D(currentz, currentx));
 }
 
+/**
+ *	a function used to display curretn X, Y, Z, and Theta values used for troubleshooting
+ */
 void RenderEngine::displayXYZTheta()
 {
 	cout << "X: " << currentx << "  Z: " << currentz << "  Theta: " << currangle.getAngle() *180 / PI << endl;

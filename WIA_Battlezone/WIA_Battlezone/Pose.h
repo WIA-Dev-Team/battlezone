@@ -27,8 +27,9 @@
  *	A subclass of Point that is used to track a point and orientation
  *	Orientation is represented by a float theta, in degress from positive x axis
  *	@author Ben Hubler
- *	@date 4/14/2011
- *	@version 1.0
+ *	@author Aaron Parker
+ *	@date 4/26/2011
+ *	@version 1.0.2
  */
 class Pose:public Point
 {

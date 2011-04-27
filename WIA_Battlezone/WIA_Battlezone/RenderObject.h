@@ -27,8 +27,8 @@
 /** 
  *	A class that is used to store information used to create images during the render process
  *	@author Ben Hubler
- *	@date 4/19/2011
- *	@version 1.0.1
+ *	@date 4/26/2011
+ *	@version 1.0.2
  */
 class RenderObject
 {

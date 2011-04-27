@@ -24,7 +24,8 @@
 #include "Point.h"
 
 /**	
- *	Default constructor sets default values for x,y, and z to 0.0 during initialization
+ *	Default constructor 
+ *	sets default values for x,y, and z to 0.0 during initialization
  */
 Point::Point()
 {

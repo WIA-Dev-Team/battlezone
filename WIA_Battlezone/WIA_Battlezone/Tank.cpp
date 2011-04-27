@@ -19,7 +19,7 @@
  *	@headerfile Tank.h "Tank.h"
  *	@author Ben Hubler
  *	@date 4/17/2011
- *	@version 1.0
+ *	@version 1.0.1
  */
 
 #include "Tank.h"
@@ -51,6 +51,9 @@ bool Tank::canFire()
 	}
 }
 
+/**
+ *	Function to set lastfire when a shot is fired
+ */
 void Tank::shotFired()
 {
 	lastfire = time(NULL);

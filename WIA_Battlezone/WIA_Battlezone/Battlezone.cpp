@@ -1,27 +1,31 @@
-//
-/* file: CS325GraphicsDriver.cpp
-/* author: djbouvier
-/* date: 12 April 2011 
+/*	This file is part of WIA Battlezone.
+ *
+ *	WIA Battlezone is free software: you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *
+ *	 WIA Battlezone is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+ *
+ *	You should have received a copy of the GNU General Public License
+ *	along with WIA Battlezone.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**	
+ *	@file RenderEngine.cpp
+ *	@author Ben Hubler
+ *	@author Aarron Parker
+ *	@author Justin Barnard
+ *	@date 4/26/2011
+ *	@version 1.0.1
+ */
 #include <iostream>
-#include <Windows.h>
-#include "vector3D.h"
-#include "cs325graphics.h"
-#include "Pose.h"
-#include "Object.h"
-#include "RenderObject.h"
-#include <list>
-#include "Tank.h"
-#include "RenderEngine.h"
 #include "UserInput.h"
 #include "Game.h"
 
-#define SCREEN_TEST 100
-#define ROTATE_TEST 100
-#define MOVE_TEST 100
-
-//const string RENDERTYPEXML="RenderTypes.xml";
 using namespace std;
 
 int main(int argc, char* argv[])
@@ -64,14 +68,6 @@ int main(int argc, char* argv[])
 			{
 				game.moveTank(-0.1);
 			}
-			//if(char(*uikeyiter) == UserInputKey::ENTER_KEY)
-			//{
-			//	//Do game stuff
-			//	cout << "Run Game Stuff" << endl;
-			//	//game.startGame();
-			//	// Start game loop
-
-			//}
 			game.RenderEnvironment();
 			uikeyiter++;
 		}

@@ -16,21 +16,22 @@
 
 /**
  *	@file Player.h
- *	@headerfile "Tank.h"
  *	@author Justin Barnard
- *	@date 4/21/2011
- *	@version 1.0
+ *	@author Ben Hubler
+ *	@date 4/26/2011
+ *	@version 1.0.01
  */
 #ifndef PLAYER_H
 #define PLAYER_H
 
 #include "Tank.h"
-
+/** 
+ *	A class that is used to represent the player in battlezone
+ */
 class Player
 {
 public:
 	Player();
-
 	bool canFire();
 	Tank *getTank();
 	Pose *getPose();
@@ -39,8 +40,6 @@ private:
 	int lives;
 	int score;
 	Tank tank;
-	
-	
-
 };
+
 #endif

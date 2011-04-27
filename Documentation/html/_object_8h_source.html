@@ -28,6 +28,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
@@ -51,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <div class="header">
@@ -71,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00011"></a>00011 <span class="comment"> *      GNU General Public License for more details.</span>
 <a name="l00012"></a>00012 <span class="comment"> *</span>
 <a name="l00013"></a>00013 <span class="comment"> *      You should have received a copy of the GNU General Public License</span>
-<a name="l00014"></a>00014 <span class="comment"> *      along with Foobar.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<a name="l00014"></a>00014 <span class="comment"> *      along with WIA Battlezone.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
 <a name="l00015"></a>00015 <span class="comment"> */</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#ifndef OBJECT_H</span>
@@ -85,23 +87,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00035"></a>00035 <span class="keyword">public</span>:
 <a name="l00036"></a>00036         <a class="code" href="class_object.html#a40860402e64d8008fb42329df7097cdb">Object</a>();
 <a name="l00037"></a>00037         <a class="code" href="class_object.html#a40860402e64d8008fb42329df7097cdb">Object</a>(<a class="code" href="class_pose.html">Pose</a> _pose, <span class="keywordtype">int</span> _health, <span class="keywordtype">int</span> _objectid, <span class="keywordtype">bool</span> _movable);
-<a name="l00038"></a>00038         <span class="keywordtype">void</span> setCoordinate(<a class="code" href="class_point.html">Point</a> _point);
-<a name="l00039"></a>00039         <span class="keywordtype">void</span> setCoordinate(<span class="keywordtype">float</span> _x, <span class="keywordtype">float</span> _y, <span class="keywordtype">float</span> _z);
-<a name="l00040"></a>00040         <span class="keywordtype">void</span> setOrientation(<span class="keywordtype">float</span> _theta);
-<a name="l00041"></a>00041         <span class="keywordtype">void</span> setHealth(<span class="keywordtype">int</span> _health);
-<a name="l00042"></a>00042         <span class="keywordtype">void</span> setObjectID(<span class="keywordtype">int</span> _objectid);
-<a name="l00043"></a>00043         <span class="keywordtype">void</span> setMovable(<span class="keywordtype">bool</span> _movable);
-<a name="l00044"></a>00044         <a class="code" href="class_pose.html">Pose</a> getPose();
-<a name="l00045"></a>00045         <span class="keywordtype">bool</span> isDestroyed();
-<a name="l00046"></a>00046         <span class="keywordtype">int</span> getHealth();
-<a name="l00047"></a>00047 <span class="keyword">private</span>:
-<a name="l00048"></a>00048         <a class="code" href="class_pose.html">Pose</a> pose;
-<a name="l00049"></a>00049         <span class="keywordtype">int</span> health;
-<a name="l00050"></a>00050         <span class="keywordtype">int</span> objectid;
-<a name="l00051"></a>00051         <span class="keywordtype">bool</span> movable;
-<a name="l00052"></a>00052 };
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054 <span class="preprocessor">#endif</span>
+<a name="l00038"></a>00038         <span class="keywordtype">void</span> <a class="code" href="class_object.html#a9916c124808dd5327ee9db651999ee5e">setCoordinate</a>(<a class="code" href="class_point.html">Point</a> _point);
+<a name="l00039"></a>00039         <span class="keywordtype">void</span> <a class="code" href="class_object.html#a9916c124808dd5327ee9db651999ee5e">setCoordinate</a>(<span class="keywordtype">float</span> _x, <span class="keywordtype">float</span> _y, <span class="keywordtype">float</span> _z);
+<a name="l00040"></a>00040         <span class="keywordtype">void</span> <a class="code" href="class_object.html#a2d8021509bbfad53a64500945e96ab77">setOrientation</a>(<span class="keywordtype">float</span> _theta);
+<a name="l00041"></a>00041         <span class="keywordtype">void</span> <a class="code" href="class_object.html#a2c0c764d747737cdddc921c7f7434e0c">setHealth</a>(<span class="keywordtype">int</span> _health);
+<a name="l00042"></a>00042         <span class="keywordtype">void</span> <a class="code" href="class_object.html#abd55d1176506de26480c149cea2e4e80">setObjectID</a>(<span class="keywordtype">int</span> _objectid);
+<a name="l00043"></a>00043         <span class="keywordtype">void</span> <a class="code" href="class_object.html#a731feebfbf40bc85e3ebaa6fdec42cf5">setMovable</a>(<span class="keywordtype">bool</span> _movable);
+<a name="l00044"></a>00044         <a class="code" href="class_pose.html">Pose</a> &amp;<a class="code" href="class_object.html#abe638c73a315e5b9c33cd52105aed9d5">getPose</a>();
+<a name="l00045"></a>00045         <span class="keywordtype">bool</span> <a class="code" href="class_object.html#a5d93664b6f77c6581757f201e59f9e3c">isDestroyed</a>();
+<a name="l00046"></a>00046         <span class="keywordtype">int</span> <a class="code" href="class_object.html#a4be5c0a55f1bb5becf04dc42227bfa8f">getHealth</a>();
+<a name="l00047"></a>00047         <span class="keywordtype">int</span> <a class="code" href="class_object.html#a4cc78a7925b3e96b21e78783253df3cf">getObjectID</a>();
+<a name="l00048"></a>00048 <span class="keyword">private</span>:
+<a name="l00049"></a>00049         <a class="code" href="class_pose.html">Pose</a> pose;
+<a name="l00050"></a>00050         <span class="keywordtype">int</span> health;
+<a name="l00051"></a>00051         <span class="keywordtype">int</span> objectid;
+<a name="l00052"></a>00052         <span class="keywordtype">bool</span> movable;
+<a name="l00053"></a>00053 };
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055 <span class="preprocessor">#endif</span>
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -109,7 +112,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -118,7 +121,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Apr 17 2011 21:10:10 for WIA Battlezone by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Apr 26 2011 22:44:11 for WIA Battlezone by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
 </body>

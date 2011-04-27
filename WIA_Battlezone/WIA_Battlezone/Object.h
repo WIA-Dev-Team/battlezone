@@ -28,7 +28,7 @@
  *	A class that is used to represent all objects in battlezone
  *	@author Ben Hubler
  *	@date 4/16/2011
- *	@version 1.0
+ *	@version 1.0.1
  */
 class Object
 {

@@ -18,8 +18,9 @@
  *	@file Pose.cpp
  *	@headerfile Pose.h "Pose.h"
  *	@author Ben Hubler
- *	@date 4/14/2011
- *	@version 1.0
+ *	@author Aaron Parker
+ *	@date 4/26/2011
+ *	@version 1.0.2
  */
 
 #include "Pose.h"
@@ -62,6 +63,9 @@ float Pose::getTheta()
 	return theta;
 }
 
+/**
+ * Default copy constructor
+ */
 Pose& Pose::operator=(Pose &_pose)
 {
 	if(!(this->getX() == _pose.getX() && this->getY() == _pose.getY() && 

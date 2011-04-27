@@ -38,8 +38,6 @@ using namespace std;
 class RenderEngine
 {
 public:
-	//RenderEngine(int _argc, char* _argv[]);
-	//RenderEngine(int _argc, char* _argv[], string _renderobjectfile);
 	RenderEngine();
 	~RenderEngine();
 	void addRenderObject(RenderObject _renderobject);
@@ -50,7 +48,6 @@ public:
 	void draw();
 	void displayXYZTheta();
 private:
-	//vector<RenderObject> renderobjects;
 	CS325Graphics *window;
 	float currentx;
 	float currentz;

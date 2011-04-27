@@ -16,23 +16,28 @@
 
 /**
  *	@file Game.cpp
- *	@headerfile "Game.h"
+ *	@headerfile Game.h "Game.h"
  *	@author Justin Barnard
- *	@date 4/21/2011
- *	@version 1.0
+ *	@author Ben Hubler
+ *	@date 4/26/2011
+ *	@version 1.0.2
  */
 
 #include "Game.h"
+
 /**
- * Start Game Method intialize components
+ *	Default constructor
  */
 Game::Game():virtualEnvironment(),renderEngine(),player()
 {
 	renderobjects.clear();
 }
+
+/**
+ * Start Game Method intialize components
+ */
 void Game::startGame()
 {
-	//initplayer.
 	Tank *_tank;
 	_tank = player.getTank();
 
@@ -42,6 +47,11 @@ void Game::startGame()
 	renderEngine.drawobjects(virtualEnvironment.getEnvironment(),renderobjects);
 	renderEngine.draw();
 };
+
+/** 
+ *	Function to return bool if player can fire
+ *	@return a bool if player can fire
+ */
 bool Game::RequestFire()
 {
 
@@ -51,6 +61,10 @@ bool Game::RequestFire()
 
 }
 
+/** 
+ *	Function to move player tank
+ *	@param _speed is a float representing the distance the tank will move forward during this cycle
+ */
 void Game::moveTank(float _speed)
 {
 	//if(virtualEnvironment.move(_speed))
@@ -59,6 +73,10 @@ void Game::moveTank(float _speed)
 	}
 }
 
+/**
+ *	Function to rotate player tank
+ *	@param _degree is a float representing the amount in degrees a tank will rotate during this cycle
+ */
 void Game::rotateTank(float _degrees)
 {
 	//if(virtualEnvironment.move(_degrees))
@@ -67,6 +85,9 @@ void Game::rotateTank(float _degrees)
 	}
 }
 
+/**
+ *	Function to refresh the game window
+ */
 void Game::RenderEnvironment()
 {
 	Tank *_tank;

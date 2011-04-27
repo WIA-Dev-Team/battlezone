@@ -16,15 +16,16 @@
 
 /**
  *	@file RenderType.cpp
- *	@headerfile RenderType.h "RenderType.h"
+ *	@headerfile RenderObject.h "RenderObject.h"
  *	@author Ben Hubler
- *	@date 4/19/2011
- *	@version 1.0.1
+ *	@date 4/26/2011
+ *	@version 1.0.2
  */
 #include "RenderObject.h"
 
 /**
  *	Default constructor
+ *	Sets all members to NULL and clears the points list
  */
 RenderObject::RenderObject()
 {

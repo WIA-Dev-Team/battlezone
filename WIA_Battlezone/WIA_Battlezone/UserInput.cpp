@@ -24,7 +24,8 @@
 #include "UserInput.h"
 #include <Windows.h>
 /**
- *	Default constructor
+ *	Default constructor 
+ *	Populates the inputkeys filed with all possible input keys
  */
 UserInput::UserInput()
 {
@@ -38,6 +39,9 @@ UserInput::UserInput()
 	keysdown.clear();
 }
 
+/**
+ *	Function to update keysdown list of currently depressed keys
+ */
 void UserInput::updateKeysDown()
 {
 	keysdown.clear();
@@ -71,6 +75,11 @@ void UserInput::updateKeysDown()
 	}
 
 }
+
+/**
+ *	Function to return a pointer to the keysdown list
+ *	@return a list of UserInputKey signifying they have been depressed
+ */
 list<UserInputKey::UserInputKey>* UserInput::getKeysDown()
 {
 	updateKeysDown();

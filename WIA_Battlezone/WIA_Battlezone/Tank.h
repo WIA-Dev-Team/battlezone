@@ -28,7 +28,7 @@
  *	A subclass that is used to store information about a tank object
  *	@author Ben Hubler
  *	@date 4/17/2011
- *	@version 1.0
+ *	@version 1.0.1
  */
 class Tank:public Object
 {

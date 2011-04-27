@@ -16,21 +16,28 @@
 
 /**
  *	@file Player.cpp
- *	@headerfile "Player.h"
+ *	@headerfile Player.h "Player.h"
  *	@author Justin Barnard
- *	@date 4/21/2011
- *	@version 1.0
+ *	@author Ben Hubler
+ *	@date 4/26/2011
+ *	@version 1.0.1
  */
 #include "Player.h"
 
 /**
- * Default Constructor 
+ * Default Constructor
+ * sets lives to 3 and score to zero
  */
 Player::Player():tank()
 {
 	lives = 3;
 	score = 0;	
 };
+
+/**
+ *	Function to determine if tank is ready to fire
+ *	@return a bool indicating if tank can fire
+ */
 bool Player::canFire()
 {
 	tank.canFire();
@@ -38,11 +45,19 @@ bool Player::canFire()
 	return true;
 };
 
+/**
+ *	Function to return a pointer to the tank
+ *	@return a pointer to a tank
+ */
 Tank *Player::getTank()
 {
 	return &tank;
 }
 
+/**
+ *	Function to return a pointer to the tanks position
+ *	@return a pointer to the tanks pose
+ */
 Pose *Player::getPose()
 {
 	return &tank.getPose();
