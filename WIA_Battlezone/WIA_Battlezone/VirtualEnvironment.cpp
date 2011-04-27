@@ -26,7 +26,7 @@
 #include <time.h>
 
 #define DEFAULT_MAX_NUM_OBJECTS 100
-#define DEFAULT_MAX_DIST		1000
+#define DEFAULT_MAX_DIST		400
 
 #ifndef PI
 #define PI 3.14159
@@ -86,7 +86,7 @@ void VirtualEnvironment::init(TankPtr &_tank,RenderListPtr _render_list)
 	render_list = _render_list;
 	srand ( time(NULL) );
 	add(_tank); 
-	generateEnv(100,1000);
+	generateEnv(DEFAULT_MAX_NUM_OBJECTS,DEFAULT_MAX_DIST);
 }
 
 bool VirtualEnvironment::move(TankPtr &_tank, const float& _degrees, const float &_speed)

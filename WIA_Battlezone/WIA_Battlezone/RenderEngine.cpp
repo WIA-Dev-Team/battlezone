@@ -137,6 +137,8 @@ void RenderEngine::drawobjects(vector<Object*>* _objects, vector<RenderObject> _
 			}
 			renderobjectsiter++;
 			window->DrawLineOnScreen(Point2D(-1,0),Point2D(1,0));
+			window->DrawLineOnScreen(Point2D(-.001,0),Point2D(.001,0));
+			window->DrawLineOnScreen(Point2D(0.00,-.001),Point2D(0.00,.001));
 		}
 	}
 }
